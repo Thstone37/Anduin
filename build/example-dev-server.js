@@ -4,9 +4,9 @@ var webpackConfigMerge=require("webpack-merge")
 var ora=require("ora");
 var spinner = ora('building for production...')
 var utils=require("./utils.js");
+var express=require("express");
 
 spinner.start()
-
 
 var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
   vue:{
@@ -21,7 +21,7 @@ var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
       })
 	]
 })
-webpack(webpackConfig, function (err, stats) {
+var compiler=webpack(webpackConfig, function (err, stats) {
   spinner.stop()
   if (err) throw err
   process.stdout.write(stats.toString({
@@ -32,3 +32,5 @@ webpack(webpackConfig, function (err, stats) {
     chunkModules: false
   }) + '\n')
 })
+
+var devMiddleware=require("webpack-dev-middleware")

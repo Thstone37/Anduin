@@ -20,5 +20,12 @@ module.exports=merge(baseWebpackConfig,{
 	}
 	vue:{
 		loaders:utils.cssLoaders({sourceMap:true})
-	}
+	},
+	devtool:"#eval-source-map",
+	pulgins:[
+       new HtmlWebpackPlugin({
+       	    filename:path.resolve(__dirname,"../example/example.html")
+       		inject:true,
+       })
+	]
 })
