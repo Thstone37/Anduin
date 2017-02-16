@@ -1,19 +1,18 @@
-/**
- * 
- * @authors Your Name (you@example.org)
- * @date    2017-02-15 18:59:54
- * @version $Id$
- */
 var baseWebpackConfig=require("./webpack.base.config.js");
 var webpack=require("webpack");
 var webpackConfigMerge=require("webpack-merge")
 var ora=require("ora");
 var spinner = ora('building for production...')
+var utils=require("./utils.js");
+
 spinner.start()
 
 
 var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
-	devtool:"#source-map",
+  vue:{
+    loaders:utils.cssLoaders({sourceMap:true})
+  },
+  devtool:"#source-map",
 	plugins:[
       new webpack.optimize.UglifyJsPlugin({
       	compress:{
