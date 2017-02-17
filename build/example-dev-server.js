@@ -33,4 +33,7 @@ var compiler=webpack(webpackConfig, function (err, stats) {
   }) + '\n')
 })
 
-var devMiddleware=require("webpack-dev-middleware")
+var app=express();
+var devMiddleware=require("webpack-dev-middleware")(compiler,{
+    publicPath:webpackConfig.output
+})
