@@ -13,6 +13,7 @@ module.exports=merge(baseWebpackConfig,{
 	},
 	output:{
        path:resolve("example/dist"),
+       publicPath:resolve("/"),
        filename:'[name].js'
 	},
 	module:{
@@ -26,6 +27,10 @@ module.exports=merge(baseWebpackConfig,{
        new HtmlWebpackPlugin({
        	    filename:path.resolve(__dirname,"../example/example.html"),
        		inject:true
-       })
+       }),
+       //webpack-hot-middleware  useage setting
+       new webpack.optimize.OccurrenceOrderPlugin(),
+	   new webpack.HotModuleReplacementPlugin(),
+       new webpack.NoErrorsPlugin(),
 	]
 })

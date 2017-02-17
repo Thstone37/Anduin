@@ -1,11 +1,11 @@
-var baseWebpackConfig=require("./webpack.base.config.js");
+var baseWebpackConfig=require("./webpack.example.dev.js");
 var webpack=require("webpack");
 var webpackConfigMerge=require("webpack-merge")
 var ora=require("ora");
 var spinner = ora('building for production...')
 var utils=require("./utils.js");
 var express=require("express");
-
+var proxyMiddleWare=require("http-proxy-middleware");
 spinner.start()
 
 var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
@@ -35,5 +35,13 @@ var compiler=webpack(webpackConfig, function (err, stats) {
 
 var app=express();
 var devMiddleware=require("webpack-dev-middleware")(compiler,{
-    publicPath:webpackConfig.output
+    publicPath:webpackConfig.output.publicPath,
+    stats:{
+      color:true,
+      chunks:false
+    }
+})
+
+var hotMiddleware=require("webpack-hot-middleware")(comiler,{
+  
 })
