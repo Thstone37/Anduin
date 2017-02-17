@@ -17,15 +17,15 @@ module.exports=merge(baseWebpackConfig,{
 	},
 	module:{
 		loaders:utils.styleLoaders({sourceMap:true})
-	}
+	},
 	vue:{
 		loaders:utils.cssLoaders({sourceMap:true})
 	},
 	devtool:"#eval-source-map",
 	pulgins:[
        new HtmlWebpackPlugin({
-       	    filename:path.resolve(__dirname,"../example/example.html")
-       		inject:true,
+       	    filename:path.resolve(__dirname,"../example/example.html"),
+       		inject:true
        })
 	]
 })
