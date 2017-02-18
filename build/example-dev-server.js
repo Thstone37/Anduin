@@ -37,11 +37,12 @@ var app=express();
 var devMiddleware=require("webpack-dev-middleware")(compiler,{
     publicPath:webpackConfig.output.publicPath,
     stats:{
-      color:true,
+      colors:true,
       chunks:false
     }
 })
 
-var hotMiddleware=require("webpack-hot-middleware")(comiler,{
-  
+var hotMiddleware=require("webpack-hot-middleware")(compiler);
+compiler.plugin("compilation",function(compilation){
+  compilation.plugin("")
 })
