@@ -1,5 +1,6 @@
 var path=require("path");
 var projectRoot=path.resolve(__dirname,"../")
+var utils=require("./utils.js")
 
 function resolve(dir){
    return path.resolve(__dirname,"..",dir)
@@ -13,7 +14,7 @@ module.exports={
   	filename:"Anduin.common.js"
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue'],
     modules: [
       resolve('src'),
       resolve('node_modules')
@@ -23,10 +24,11 @@ module.exports={
     }
   },
   module:{
-  	loaders:[
+  	rules:[
       {
       	test:"/\.vue$/",
-      	loader:"vue",
+      	loader:"vue-loader",
+        options:utils.cssLoaders({sourceMap:true})
       },
       {
         test: /\.js$/,

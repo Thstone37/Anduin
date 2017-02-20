@@ -1,6 +1,6 @@
-import AnCol from "./src/col";
+import UiCol from "./src/col";
 
-AdCol.install=function(Vue){
-   Vue.component(AdCol.name,AnCol)
+UiCol.install=function(Vue){
+   Vue.component(UiCol.name,UiCol)
 }
-export default AnCol;
+export default UiCol;

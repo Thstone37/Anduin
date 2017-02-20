@@ -18,7 +18,12 @@ exports.cssLoaders = function(options) {
 			return loader + (options.sourceMap ? extraParamChar + "sourceMap" : "")
 		}).join("!")
 		if (options.extract) {
-			return ExtractTextPlugin.extract("vue-style-loader", sourceLoader)
+			return ExtractTextPlugin.extract(
+                  {
+                  	use:sourceLoader,
+                  	fallback:"vue-style-loader"
+                  }
+				)
 		} else {
 			return ["vue-style-loader", sourceLoader].join("!");
 		}

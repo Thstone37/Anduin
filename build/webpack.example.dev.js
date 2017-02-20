@@ -4,12 +4,13 @@ var merge=require("webpack-merge");
 var HtmlWebpackPlugin=require("html-webpack-plugin");
 var path=require("path");
 var utils=require("./utils.js");
+var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 function resolve(dir){
 	return path.resolve(__dirname,"..",dir)
 }
 module.exports=merge(baseWebpackConfig,{
 	entry:{
-      app:'./example/main.js'
+      app:'../example/main.js'
 	},
 	output:{
        path:resolve("example/dist"),
@@ -17,12 +18,12 @@ module.exports=merge(baseWebpackConfig,{
        filename:'[name].js'
 	},
 	module:{
-		loaders:utils.styleLoaders({sourceMap:true})
+		rules:utils.styleLoaders({sourceMap:true})
 	},
-	vue:{
-		loaders:utils.cssLoaders({sourceMap:true})
-	},
-	devtool:"#eval-source-map",
+	// vue:{
+	// 	loaders:utils.cssLoaders({sourceMap:true})
+	// },
+	devtool:"#cheap-module-eval-source-map",
 	pulgins:[
        new HtmlWebpackPlugin({
        	    filename:path.resolve(__dirname,"../example/example.html"),
@@ -32,5 +33,6 @@ module.exports=merge(baseWebpackConfig,{
        new webpack.optimize.OccurrenceOrderPlugin(),
 	   new webpack.HotModuleReplacementPlugin(),
        new webpack.NoErrorsPlugin(),
+       new FriendlyErrorsPlugin()
 	]
 })

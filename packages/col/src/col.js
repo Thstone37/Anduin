@@ -44,7 +44,7 @@ export default{
              Object.keys(props).forEach(prop =>{
              	if(["span","offset","pull","push"].indexOf(prop)){
 		     	    classArray.push(
-		              prop=="span"?`ui-col-${sizeProp}-${props[prop]}`:`ui-col-${sizeProp}-${props[prop]}`;
+		              prop=="span"?`ui-col-${sizeProp}-${props[prop]}`:`ui-col-${sizeProp}-${props[prop]}`
 		         	)
              	}else{
              	  console.warn("not support ${prop} property")

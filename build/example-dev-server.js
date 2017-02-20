@@ -10,9 +10,6 @@ var proxyMiddleWare=require("http-proxy-middleware");
 spinner.start()
 
 var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
-  vue:{
-    loaders:utils.cssLoaders({sourceMap:true})
-  },
   devtool:"#source-map",
 	plugins:[
       new webpack.optimize.UglifyJsPlugin({
@@ -37,16 +34,20 @@ var compiler=webpack(webpackConfig, function (err, stats) {
 var app=express();
 var devMiddleware=require("webpack-dev-middleware")(compiler,{
     publicPath:webpackConfig.output.publicPath,
+    quiet:true,
     stats:{
       colors:true,
       chunks:false
     }
 })
 
-var hotMiddleware=require("webpack-hot-middleware")(compiler);
+var hotMiddleware=require("webpack-hot-middleware")(compiler,{
+  log:() =>{}
+});
 compiler.plugin("compilation",function(compilation){
   compilation.plugin("html-webpack-plugin-after-emit",function(data,cb){
        hotMiddleware.publish({actiton:"reload"});
+       cb();
   })
 })
 var port=config.example.port||8080;
