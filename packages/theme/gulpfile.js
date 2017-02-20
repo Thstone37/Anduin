@@ -7,5 +7,10 @@ gulp.task("sass", function() {
 	    .pipe(cssmin())
 	    .pipe(gulp.dest("./build"))
 })
-
-gulp.task("build", ["sass"]);
+gulp.task("index",function(){
+	return gulp.src("index.scss")
+	      .pipe(sass())
+	      .pipe(cssmin())
+	      .pipe(gulp.dest("./build"))
+})
+gulp.task("build", ["sass","index"]);
