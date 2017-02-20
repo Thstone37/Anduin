@@ -1,0 +1,10 @@
+{
+  "scripts":{
+    "build":"gulp build"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-sass": "^3.1.0"
+  }
+}
