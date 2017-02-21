@@ -1,14 +1,15 @@
 <template>
 	<div class="app">
+	  <ui-row>
 	    <ui-col :span="8">
 	    	<div class="nav"></div>
 	    </ui-col>
-		<ui-col :span="16">
+		<ui-col :span="12" :offset="4">
 			<div class="col"></div>
 		</ui-col>
+	</ui-row>
 	</div>
 </template>
-
 <script>
 	 export default{
 	   data () {

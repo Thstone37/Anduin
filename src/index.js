@@ -1,6 +1,8 @@
 import Col from "../packages/col";
+import Row from "../packages/row";
 const components=[
-  Col
+  Col,
+  Row
 ];
 
 const install=function(Vue){
@@ -18,4 +20,5 @@ module.exports={
 	version:"0.0.1",
 	install,
 	Col,
+  Row
 }
