@@ -10,29 +10,27 @@ function resolve(dir){
 }
 module.exports=merge(baseWebpackConfig,{
 	entry:{
-      app:'../example/main.js'
+      app:'./examples/main.js'
 	},
 	output:{
-       path:resolve("example/dist"),
-       publicPath:resolve("/"),
+       path:resolve("examples/dist"),
+       publicPath:"/examples/",
        filename:'[name].js'
 	},
 	module:{
 		rules:utils.styleLoaders({sourceMap:true})
 	},
-	// vue:{
-	// 	loaders:utils.cssLoaders({sourceMap:true})
-	// },
 	devtool:"#cheap-module-eval-source-map",
-	pulgins:[
+	plugins:[
        new HtmlWebpackPlugin({
-       	    filename:path.resolve(__dirname,"../example/example.html"),
+       	    filename:"example.html",
+       	    template:"./examples/example.html",
        		inject:true
        }),
        //webpack-hot-middleware  useage setting
        new webpack.optimize.OccurrenceOrderPlugin(),
 	   new webpack.HotModuleReplacementPlugin(),
-       new webpack.NoErrorsPlugin(),
+       // new webpack.NoErrorsPlugin(),
        new FriendlyErrorsPlugin()
 	]
 })

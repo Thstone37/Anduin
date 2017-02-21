@@ -15,26 +15,35 @@ module.exports={
   },
   resolve: {
     extensions: ['.js', '.vue'],
-    modules: [
-      resolve('src'),
-      resolve('node_modules')
-    ],
+    modules: [resolve('src'),resolve("examples"),resolve("packages"),resolve('node_modules')],
     alias: {
-      'src': resolve("src"),
+      'src': resolve("examples/src"),
+      "examples":resolve("examples"),
+      "packages":resolve("packages"),
+      'vue$': 'vue/dist/vue.common.js'
     }
   },
   module:{
   	rules:[
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: "pre",
+      //   include: [resolve('src'), resolve('examples'),resolve("packages")],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
-      	test:"/\.vue$/",
+      	test:/\.vue$/,
       	loader:"vue-loader",
-        options:utils.cssLoaders({sourceMap:true})
+        options:{loaders:utils.cssLoaders({sourceMap:true})}
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: projectRoot,
-        exclude: /node_modules/
+        include: [resolve("src"),resolve("examples"),resolve("packages")],
+        exclude: [resolve("node_modules")]
       },
   	]
   }

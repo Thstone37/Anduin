@@ -1,7 +1,7 @@
 export default{
 	name:"UiCol",
 	props:{
-     col:{
+     span:{
      	type:Number,
      	default:24
      },
@@ -27,23 +27,23 @@ export default{
 		}
 	},
 	render(h){
-		let classArray=[];
+		let classList=[];
 
 		["span","offset","pull","push"].forEach(prop =>{
           if(this[prop]){
-          	classArray.push(
+          	classList.push(
                prop=="span"?`ui-col-${this[prop]}`:`ui-col-${prop}-${this[prop]}`
       		);
           }
 		});
 		["xs","sm","md","lg"].forEach(sizeProp =>{
            if(typeof this[sizeProp]=="number"){
-           	classArray.push(`ui-col-${sizeProp}-${this[sizeProp]}`);
+           	classList.push(`ui-col-${sizeProp}-${this[sizeProp]}`);
            }else if(typeof this[sizeProp]=="object"){
              let props=this[sizeProp];
              Object.keys(props).forEach(prop =>{
              	if(["span","offset","pull","push"].indexOf(prop)){
-		     	    classArray.push(
+		     	    classList.push(
 		              prop=="span"?`ui-col-${sizeProp}-${props[prop]}`:`ui-col-${sizeProp}-${props[prop]}`
 		         	)
              	}else{
@@ -52,6 +52,11 @@ export default{
              })
            }
 		})
-		return(<div style={style}>{this.$slots.default}</div>);
+		return(
+      <div 
+        class={['ui-col', classList]}
+        >
+        {this.$slots.default}
+      </div>);
 	}
 }

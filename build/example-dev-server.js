@@ -1,4 +1,4 @@
-var baseWebpackConfig=require("./webpack.example.dev.js");
+var webpackConfig=require("./webpack.example.dev.js");
 var webpack=require("webpack");
 var webpackConfigMerge=require("webpack-merge")
 var ora=require("ora");
@@ -7,18 +7,18 @@ var utils=require("./utils.js");
 var express=require("express");
 var config=require("./config");
 var proxyMiddleWare=require("http-proxy-middleware");
+var path=require("path")
 spinner.start()
-
-var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
-  devtool:"#source-map",
-	plugins:[
-      new webpack.optimize.UglifyJsPlugin({
-      	compress:{
-      		warnings:false
-      	}
-      })
-	]
-})
+// var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
+//   devtool:"#source-map",
+// 	plugins:[
+//       new webpack.optimize.UglifyJsPlugin({
+//       	compress:{
+//       		warnings:false
+//       	}
+//       })
+// 	]
+// })
 var compiler=webpack(webpackConfig, function (err, stats) {
   spinner.stop()
   if (err) throw err
@@ -57,7 +57,7 @@ Object.keys(proxyObject).forEach(function(context){
   if(typeof options=="string"){
     options={target:options};
   }
-  app.use(proxyMiddleWare(context,options));
+  app.use(proxyMiddleware(options.filter || context, options))
 })
 
 //history API fallback Adapt
@@ -66,7 +66,9 @@ app.use(require('connect-history-api-fallback')());
 app.use(devMiddleware);
 
 app.use(hotMiddleware);
-
+// serve pure static assets
+// var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+app.use(path.join("/","dist"),express.static("./dist"));
 module.exports=app.listen(port,function(err){
   if(err){
     console.log(err);
