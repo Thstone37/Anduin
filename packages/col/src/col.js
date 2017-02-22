@@ -18,7 +18,7 @@ export default{
 			return this.$parent.gutter;
 		},
 		style(){
-			var ret={}
+			var ret={};
 			if(this.gutter){
                ret.paddingLeft=this.gutter/2+"px";
                ret.paddingRight=ret.paddingLeft;
@@ -28,7 +28,7 @@ export default{
 	},
 	render(h){
 		let classList=[];
-
+    let {style}=this;
 		["span","offset","pull","push"].forEach(prop =>{
           if(this[prop]){
           	classList.push(
@@ -55,7 +55,7 @@ export default{
 		return(
       <div 
         class={['ui-col', classList]}
-        >
+        style={style}>
         {this.$slots.default}
       </div>);
 	}

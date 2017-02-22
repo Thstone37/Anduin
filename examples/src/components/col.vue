@@ -4,8 +4,97 @@
 	    <ui-col :span="8">
 	    	<div class="nav"></div>
 	    </ui-col>
-		<ui-col :span="12" :offset="4">
+		<ui-col :span="12">
 			<div class="col"></div>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+			<ui-col :span="24">
+			<ui-button type="default">
+				提交
+			</ui-button>
+			<ui-button type="primary">
+				提交
+			</ui-button>
+			<ui-button type="success">
+				提交
+			</ui-button>
+			<ui-button type="info">
+				提交
+			</ui-button>
+			<ui-button type="warning">
+				提交
+			</ui-button>
+			<ui-button type="danger">
+				提交
+			</ui-button>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+			<ui-button type="default" :simple="true">
+				提交
+			</ui-button>
+			<ui-button type="primary" :simple="true">
+				提交
+			</ui-button>
+			<ui-button type="success" :simple="true">
+				提交
+			</ui-button>
+			<ui-button type="info"   :simple="true">
+				提交
+			</ui-button>
+			<ui-button type="warning" :simple="true">
+				提交
+			</ui-button>
+			<ui-button type="danger" :simple="true">
+				提交
+			</ui-button>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+			<ui-button type="default"  :disabled="true">
+				提交
+			</ui-button>
+			<ui-button type="primary"  :disabled="true">
+				提交
+			</ui-button>
+			<ui-button type="success"  :disabled="true">
+				提交
+			</ui-button>
+			<ui-button type="info"  :disabled="true">
+				提交
+			</ui-button>
+			<ui-button type="warning"  :disabled="true">
+				提交
+			</ui-button>
+			<ui-button type="danger"  :disabled="true">
+				提交
+			</ui-button>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+			<ui-button size="lg" type="primary">
+				提交
+			</ui-button>
+			<ui-button type="primary">
+				提交
+			</ui-button>
+			<ui-button size="sm" type="primary">
+				提交
+			</ui-button>
+			<ui-button size="xs" type="primary">
+				提交
+			</ui-button>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+			<ui-button type="primary" btntype="button">提交</ui-button>
+			<ui-button type="success" btntype="submit">提交</ui-button>
+			<ui-button type="info" btntype="reset">提交</ui-button>
 		</ui-col>
 	</ui-row>
 	</div>

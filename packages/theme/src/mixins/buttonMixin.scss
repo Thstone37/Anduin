@@ -1,0 +1,9 @@
+@mixin buttonStyle($color,$bgColor,$borderColor){
+	color:$color;
+	background-color: $bgColor;
+	border-color:$borderColor;
+}
+@mixin buttonSize($fontSize,$padding){
+	font-size:$fontSize;
+	padding:$padding;
+}

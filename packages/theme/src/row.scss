@@ -1,0 +1,13 @@
+
+.ui-row{
+	position: relative;
+	box-sizing:border-box;
+	&:before{
+       content:"";
+       display: table;
+	}
+	&:after{
+		content:"";
+		clear:both;
+	}
+}

@@ -1,0 +1,87 @@
+@import './mixins/buttonMixin.scss';
+@import './common/var.scss';
+$button-type-list: (primary,$primary-color),(success,$success-color),(info,$info-color),(warning,$warning-color),(danger,$danger-color);
+$button-size-list: (lg,$button-font-size-large,$button-padding-large),(sm,$button-font-size-small,$button-padding-small),(xs,$button-font-size-extrasmall,$button-padding-extrasmall);
+.ui-button
+{
+    font-size: $button-font-size;
+    line-height: 1;
+
+    padding: $button-padding;
+
+    text-align: center;
+
+    border-width: $border-width-standard;
+    border-style: $border-style-standard;
+    border-radius: $border-radius-standard;
+    outline: none;
+    &:hover
+    {
+        cursor: pointer;
+    }
+}
+.ui-button-default
+{
+    @include buttonStyle($button-default-color,$button-default-bgColor,$button-default-border-color);
+    &:hover
+    {
+	    $hoverColor: darken($button-default-bgColor,5%);
+        background-color: $hoverColor;
+    }
+    &.is-simple
+    {
+        &:hover
+        {
+            @include buttonStyle($primary-color,#fff,$primary-color);
+        }
+    }
+    &.is-disabled
+    {
+    	$disabledDefaultColor: darken($button-default-bgColor,5%);
+        background-color: $disabledDefaultColor;
+        &:hover
+        {
+            cursor: not-allowed;
+
+            background-color: $disabledDefaultColor;
+        }
+    }
+}
+/* Button type css */
+@each $type,$color in $button-type-list
+{
+    .ui-button-#{$type}
+    {
+        @include buttonStyle(#fff,$color,$color);
+        &:hover
+        {
+            $hoverColor: darken($color,8%);
+            @include buttonStyle(#fff,$hoverColor,$hoverColor);
+        }
+        &.is-simple
+        {
+            @include buttonStyle($button-default-color,$button-default-bgColor,$button-default-border-color);
+            &:hover
+            {
+                @include buttonStyle($color,#fff,$color);
+            }
+        }
+        &.is-disabled
+        {
+            $disabledColor: lighten($color,20%);
+            @include buttonStyle(#fff,$disabledColor,$disabledColor);
+            &:hover
+            {
+                cursor: not-allowed;
+
+                @include buttonStyle(#fff,$disabledColor,$disabledColor);
+            }
+        }
+    }
+}
+/* Button size css */
+@each $size,$fontSize,$padding in $button-size-list{
+  .ui-button-#{$size}{
+  	@include buttonSize($fontSize,$padding)
+  }
+}

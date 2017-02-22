@@ -1,0 +1,35 @@
+<template>
+	<button :disabled="disabled"
+	:type="btntype" 
+	:class="['ui-button',
+	size?'ui-button-'+size:'',
+	type?'ui-button-'+type:'',
+	{
+	 'is-simple':simple,
+	 'is-disabled':disabled
+	}
+	]">
+		<span><slot></slot></span>
+	</button>
+</template>
+<script>
+	export default{
+		name:"UiButton",
+		props:{
+			size:{
+				type:String,
+				default:""
+			},
+            type:{
+            	type:String,
+            	default:"default"
+            },
+            btntype:{
+            	type:String,
+            	default:"button"
+            },
+            disabled:Boolean,
+            simple:Boolean
+		}
+	}
+</script>
