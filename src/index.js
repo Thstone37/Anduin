@@ -1,10 +1,12 @@
 import Col from "../packages/col";
 import Row from "../packages/row";
-import Button from "../packages/button"
+import Button from "../packages/button";
+import ButtonGroup from "../packages/button-group";
 const components=[
   Col,
   Row,
-  Button
+  Button,
+  ButtonGroup
 ];
 
 const install=function(Vue){
@@ -23,5 +25,6 @@ module.exports={
 	install,
 	Col,
   Row,
-  Button
+  Button,
+  ButtonGroup
 }

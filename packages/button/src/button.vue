@@ -9,7 +9,7 @@
 	 'is-disabled':disabled
 	}
 	]">
-		<span><slot></slot></span>
+	<span><slot></slot></span>
 	</button>
 </template>
 <script>
@@ -29,7 +29,7 @@
             	default:"button"
             },
             disabled:Boolean,
-            simple:Boolean
+            simple:Boolean,
 		}
 	}
 </script>

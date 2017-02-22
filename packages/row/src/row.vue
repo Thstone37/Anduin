@@ -8,6 +8,7 @@
 		name:"UiRow",
 		props:{
 			gutter:Number,
+			vertical_gutter:Number
 		},
 		computed:{
 			style(){

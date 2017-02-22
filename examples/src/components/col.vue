@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-	  <ui-row>
+	  <ui-row :gutter="30" :vertical_gutter="30">
 	    <ui-col :span="8">
 	    	<div class="nav"></div>
 	    </ui-col>
@@ -8,7 +8,7 @@
 			<div class="col"></div>
 		</ui-col>
 	</ui-row>
-	<ui-row>
+	<ui-row :gutter="30">
 			<ui-col :span="24">
 			<ui-button type="default">
 				提交
@@ -95,6 +95,15 @@
 			<ui-button type="primary" btntype="button">提交</ui-button>
 			<ui-button type="success" btntype="submit">提交</ui-button>
 			<ui-button type="info" btntype="reset">提交</ui-button>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+		  <ui-button-group>
+			<ui-button type="primary" btntype="button">提交</ui-button>
+			<ui-button type="success" btntype="submit">提交</ui-button>
+			<ui-button type="info" btntype="reset">提交</ui-button>
+		  </ui-button-group>
 		</ui-col>
 	</ui-row>
 	</div>
