@@ -106,6 +106,11 @@
 		  </ui-button-group>
 		</ui-col>
 	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+			<ui-radio></ui-radio>
+		</ui-col>
+	</ui-row>
 	</div>
 </template>
 <script>

@@ -2,11 +2,13 @@ import Col from "../packages/col";
 import Row from "../packages/row";
 import Button from "../packages/button";
 import ButtonGroup from "../packages/button-group";
+import Radio from "../packages/radio";
 const components=[
   Col,
   Row,
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Radio
 ];
 
 const install=function(Vue){
@@ -26,5 +28,6 @@ module.exports={
 	Col,
   Row,
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Radio
 }
