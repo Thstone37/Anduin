@@ -10,7 +10,6 @@ const components=[
   ButtonGroup,
   Radio
 ];
-
 const install=function(Vue){
   /* istanbul ignore if */
   if (install.installed) return;

@@ -1,0 +1,25 @@
+.ui-radio{
+	.ui-radio-container{
+		position: relative;
+		cursor:pointer;
+		.ui-radio-show{
+			border-radius: 50%;
+			width:18px;
+			height:18px;
+			border:1px solid #ddd;
+			background-color: #fff;
+			display: inline-block;
+			cursor:pointer;
+		}
+		.ui-radio-show:after{
+
+		}
+		.ui-radio-real{
+			position: absolute;
+			opacity: 0;
+			z-index:1;
+			top:0;
+			left:0;
+		}
+	}
+}
