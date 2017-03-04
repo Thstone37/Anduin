@@ -117,7 +117,7 @@
 	</ui-row>
 	<ui-row>
 		<ui-col :span="24">
-			<ui-checkbox-group >
+			<ui-checkbox-group v-model="checkbox">
 				<ui-checkbox label="北京"></ui-checkbox>
 				<ui-checkbox label="上海"></ui-checkbox>
 				<ui-checkbox label="深圳"></ui-checkbox>
@@ -131,7 +131,8 @@
 	   data () {
 	     return {
 	     	span:10,
-	     	radio:"已认证"
+	     	radio:"已认证",
+	     	checkbox:[]
 	     }
 	   },
 	   components: {
