@@ -28,6 +28,29 @@
         	cursor:pointer;
         	border-radius:$checkbox-border-radius;
         }
+        .ui-checkbox-show:after{
+        		display: inline-block;
+        		content:"";
+        		border:2px solid $checkbox-default-bgColor;
+        		border-left:0;
+        		border-top:0;
+        		width:4px;
+        		height:8px;
+        		position: absolute;
+        		left:6px;
+        		top:2px;
+		        transform: rotate(45deg) scale(0);
+				transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+        }
+        &.is-checked{
+        	.ui-checkbox-show{
+	        	background-color: $primary-color;
+        		border-color:$primary-color;
+        	}
+        	.ui-checkbox-show:after{
+              transform:rotate(45deg) scale(1);
+        	}
+        }
 	}
 	.ui-checkbox-label{
 		font-size: 14px;

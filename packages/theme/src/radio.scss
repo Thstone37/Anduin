@@ -34,15 +34,7 @@
 			position: relative;
 		}
     	.ui-radio-show:after{
-       
-		}
-	    &.is-checked{
-			.ui-radio-show{
-				border-color:$primary-color;
-				background-color: $primary-color;
-			}
-			.ui-radio-show:after{
-	            width: 6px;
+   	            width: 6px;
 			    height: 6px;
 			    border-radius: 50%;
 			    background-color: #fff;
@@ -50,8 +42,16 @@
 			    position: absolute;
 			    left: 50%;
 			    top: 50%;
-		        transform: translate(-50%,-50%) scale(1);
+		        transform: translate(-50%,-50%) scale(0);
 				transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+		}
+	    &.is-checked{
+			.ui-radio-show{
+				border-color:$primary-color;
+				background-color: $primary-color;
+			}
+			.ui-radio-show:after{
+		        transform: translate(-50%,-50%) scale(1);
 			}
 		}
 	}

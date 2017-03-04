@@ -17,7 +17,6 @@
       },
       watch:{
       	value(value){
-      		console.log(value);
       		this.$emit("change",value);
       	}
       }
