@@ -11,10 +11,11 @@ function broadcast(componentName,eventName,args){
 export default{
 	methods:{
 		broadcast(componentName,eventName,args){
-			broadcast.apply(broadcast,arguments);
+			broadcast.apply(this,arguments);
 		},
 		dispatch(componentName,eventName,args){
           var parent=this.$parent||this.$root;
+          var name=parent.$options.componentName;
           while(parent&&(!name||name!==componentName)){
           	parent=parent.$parent;
           	if(parent){
@@ -22,7 +23,7 @@ export default{
           	}
           }
           if(parent){
-          	parent.$emit.apply(parent,[eventName].concat([args]));
+          	parent.$emit.apply(parent,[eventName].concat(args));
           }
 		}
 	}

@@ -3,12 +3,14 @@ import Row from "../packages/row";
 import Button from "../packages/button";
 import ButtonGroup from "../packages/button-group";
 import Radio from "../packages/radio";
+import RadioGroup from "../packages/radio-group";
 const components=[
   Col,
   Row,
   Button,
   ButtonGroup,
-  Radio
+  Radio,
+  RadioGroup
 ];
 const install=function(Vue){
   /* istanbul ignore if */
@@ -28,5 +30,6 @@ module.exports={
   Row,
   Button,
   ButtonGroup,
-  Radio
+  Radio,
+  RadioGroup
 }

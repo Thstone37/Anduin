@@ -108,7 +108,11 @@
 	</ui-row>
 	<ui-row>
 		<ui-col :span="24">
-			<ui-radio></ui-radio>
+			<ui-radio-group v-model="radio">
+				<ui-radio label="已认证" name="fstatus"></ui-radio>
+				<ui-radio label="未认证" name="fstatus"></ui-radio>
+				<ui-radio label="待认证" name="fstatus"></ui-radio>
+			</ui-radio-group>
 		</ui-col>
 	</ui-row>
 	</div>
@@ -117,7 +121,8 @@
 	 export default{
 	   data () {
 	     return {
-	     	span:10
+	     	span:10,
+	     	radio:"已认证"
 	     }
 	   },
 	   components: {

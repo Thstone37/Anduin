@@ -1,8 +1,29 @@
+@import './common/var.scss';
 .ui-radio{
+	display: inline-block;
+	white-space: nowrap;
+    position: relative;
 	.ui-radio-container{
-		position: relative;
-		cursor:pointer;
+	    white-space: nowrap;
+		cursor: pointer;
+		outline: none;
+    	display: inline-block;
+    	line-height: 1;
+    	position: relative;
+    	vertical-align: middle;
+		.ui-radio-real{
+			position: absolute;
+			opacity: 0;
+			z-index:-1;
+			top:0;
+			left:0;
+			margin:0;
+			bottom:0;
+			right:0;
+			outline: none;
+		}
 		.ui-radio-show{
+			box-sizing:border-box;
 			border-radius: 50%;
 			width:18px;
 			height:18px;
@@ -10,16 +31,36 @@
 			background-color: #fff;
 			display: inline-block;
 			cursor:pointer;
+			position: relative;
 		}
-		.ui-radio-show:after{
-
+    	.ui-radio-show:after{
+       
 		}
-		.ui-radio-real{
-			position: absolute;
-			opacity: 0;
-			z-index:1;
-			top:0;
-			left:0;
+	    &.is-checked{
+			.ui-radio-show{
+				border-color:$primary-color;
+				background-color: $primary-color;
+			}
+			.ui-radio-show:after{
+	            width: 6px;
+			    height: 6px;
+			    border-radius: 50%;
+			    background-color: #fff;
+			    content: "";
+			    position: absolute;
+			    left: 50%;
+			    top: 50%;
+		        transform: translate(-50%,-50%) scale(1);
+				transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+			}
 		}
 	}
+	.ui-radio-label{
+		font-size:14px;
+		vertical-align: middle;
+	    white-space: nowrap;
+	}
+}
+.ui-radio+.ui-radio{
+	margin-left:15px;
 }
