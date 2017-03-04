@@ -27,8 +27,8 @@
 			border-radius: 50%;
 			width:18px;
 			height:18px;
-			border:1px solid #ddd;
-			background-color: #fff;
+			border:1px solid $radio-default-border-color;
+			background-color:$radio-default-bgColor;
 			display: inline-block;
 			cursor:pointer;
 			position: relative;
@@ -59,6 +59,7 @@
 		font-size:14px;
 		vertical-align: middle;
 	    white-space: nowrap;
+	    color:$radio-default-color;
 	}
 }
 .ui-radio+.ui-radio{

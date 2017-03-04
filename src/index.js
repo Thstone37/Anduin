@@ -4,13 +4,17 @@ import Button from "../packages/button";
 import ButtonGroup from "../packages/button-group";
 import Radio from "../packages/radio";
 import RadioGroup from "../packages/radio-group";
+import CheckBox from "../packages/checkbox";
+import CheckBoxGroup from "../packages/checkbox-group";
 const components=[
   Col,
   Row,
   Button,
   ButtonGroup,
   Radio,
-  RadioGroup
+  RadioGroup,
+  CheckBox,
+  CheckBoxGroup
 ];
 const install=function(Vue){
   /* istanbul ignore if */
@@ -31,5 +35,7 @@ module.exports={
   Button,
   ButtonGroup,
   Radio,
-  RadioGroup
+  RadioGroup,
+  CheckBox,
+  CheckBoxGroup
 }
