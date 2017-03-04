@@ -1,0 +1,21 @@
+
+@font-face {font-family: "Anduin-iconfont";
+  src: url('src/fonts/iconfont.eot?t=1488625410470'); /* IE9*/
+  src: url('src/fonts/iconfont.eot?t=1488625410470#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('src/fonts/iconfont.woff?t=1488625410470') format('woff'), /* chrome, firefox */
+  url('src/fonts/iconfont.ttf?t=1488625410470') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('src/fonts/iconfont.svg?t=1488625410470#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+[class^="ui-icon-"],[class*="ui-icon-"]{
+  font-family:"Anduin-iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ui-icon-add:before { content: "\3460"; }
+
+.ui-icon-reduce:before { content: "\e627"; }
+
