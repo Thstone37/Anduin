@@ -124,6 +124,11 @@
 			</ui-checkbox-group>
 		</ui-col>
 	</ui-row>
+    <ui-row>
+		<ui-col :span="24">
+           <ui-count-input position="center"></ui-count-input>
+		</ui-col>
+	</ui-row>
 	</div>
 </template>
 <script>
