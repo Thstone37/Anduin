@@ -126,7 +126,7 @@
 	</ui-row>
     <ui-row>
 		<ui-col :span="24">
-           <ui-count-input position="center"></ui-count-input>
+           <ui-count-input></ui-count-input>
 		</ui-col>
 	</ui-row>
 	</div>
