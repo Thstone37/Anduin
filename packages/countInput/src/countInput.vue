@@ -1,10 +1,9 @@
 <template>
 	<div class="ui-count-input">
-	    <input type="text" class="ui-count-input-inner" :class="{'is-left':!center}" v-if="!center" :value="initial" v-model="model"/>
 	    <span class="ui-count-input-reduce">
 	    	<i class="ui-icon-reduce" @click="reduce"></i>
 	    </span>
-		<input type="text" class="ui-count-input-inner" :class="{'is-center':center}" v-if="center" :value="initial" v-model="model"/>
+		<input type="text" class="ui-count-input-inner"  :value="initial" v-model="model"/>
 		<span class="ui-count-input-add">
 			<i class="ui-icon-add" @click="plus"></i>
 		</span> 
@@ -15,12 +14,8 @@
 		name:"UiCountInput",
 
 		props:{
-           center:{
-           	type:Boolean,
-           	default:true
-           },
            initial:{
-           	type:Number,
+           	type:[Number,String],
            	default:1
            },
            min:[Number,String],
