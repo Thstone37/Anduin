@@ -8,6 +8,7 @@
 		:placeholder="placeholder"
 		:name="name"
 		:autocomplete="autocomplete"
+		:value="currentValue"
 		/>
 	  </template>
 	  <textarea v-else
@@ -25,6 +26,7 @@
 	export default{
 		name:"UiInput",
 		props:{
+			value:[Number,String],
 			type:{
 				type:String,
 				default:"text"
@@ -48,6 +50,17 @@
 			name:String,
 			minLength:Number,
 			maxLength:Number,
-		}
+		},
+	    data(){
+	    	return{
+	    		currentValue:this.value
+	    	}
+	    },
+	    watch:{
+	    	currentValue:function(val){
+	    		console.log(val);
+	    		this.currentValue=val;
+	    	}
+	    }
 	}
 </script>
