@@ -7,6 +7,8 @@ import RadioGroup from "../packages/radio-group";
 import CheckBox from "../packages/checkbox";
 import CheckBoxGroup from "../packages/checkbox-group";
 import CountInput from "../packages/countInput";
+import Option from "../packages/option";
+import Select from "../packages/select";
 const components=[
   Col,
   Row,
@@ -16,7 +18,9 @@ const components=[
   RadioGroup,
   CheckBox,
   CheckBoxGroup,
-  CountInput
+  CountInput,
+  Option,
+  Select
 ];
 const install=function(Vue){
   /* istanbul ignore if */
@@ -40,5 +44,7 @@ module.exports={
   RadioGroup,
   CheckBox,
   CheckBoxGroup,
-  CountInput
+  CountInput,
+  Option,
+  Select
 }

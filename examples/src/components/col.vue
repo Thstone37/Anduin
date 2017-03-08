@@ -129,6 +129,13 @@
            <ui-count-input max="20" min="-14" initial="10" position="center"></ui-count-input>
 		</ui-col>
 	</ui-row>
+	    <ui-row>
+		<ui-col :span="24">
+           <ui-select>
+           	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
+           </ui-select>
+		</ui-col>
+	</ui-row>
 	</div>
 </template>
 <script>
@@ -137,7 +144,8 @@
 	     return {
 	     	span:10,
 	     	radio:"已认证",
-	     	checkbox:[]
+	     	checkbox:[],
+	     	options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"深圳",value:"3"}]
 	     }
 	   },
 	   components: {
