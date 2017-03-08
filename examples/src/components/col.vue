@@ -129,11 +129,16 @@
            <ui-count-input max="20" min="-14" initial="10" position="center"></ui-count-input>
 		</ui-col>
 	</ui-row>
-	    <ui-row>
+	<ui-row>
 		<ui-col :span="24">
            <ui-select>
            	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
            </ui-select>
+		</ui-col>
+	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+           <ui-input icon="arrowUp" placeholder="请输入内容"></ui-input>
 		</ui-col>
 	</ui-row>
 	</div>

@@ -9,6 +9,7 @@ import CheckBoxGroup from "../packages/checkbox-group";
 import CountInput from "../packages/countInput";
 import Option from "../packages/option";
 import Select from "../packages/select";
+import Input from "../packages/input";
 const components=[
   Col,
   Row,
@@ -20,7 +21,8 @@ const components=[
   CheckBoxGroup,
   CountInput,
   Option,
-  Select
+  Select,
+  Input
 ];
 const install=function(Vue){
   /* istanbul ignore if */
@@ -46,5 +48,6 @@ module.exports={
   CheckBoxGroup,
   CountInput,
   Option,
-  Select
+  Select,
+  Input
 }
