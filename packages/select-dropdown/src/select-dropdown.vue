@@ -1,7 +1,7 @@
 <template>
-	<transtion>
+	<div class="ui-select-dropdown">
 		<slot></slot>
-	</transtion>
+	</div>
 </template>
 <script>
 	export default{
