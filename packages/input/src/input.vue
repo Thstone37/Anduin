@@ -6,11 +6,16 @@
 		<input type="text" 
 		:class="['ui-input-inner',size?'ui-input-'+size:'']" 
 		:placeholder="placeholder"
+		:name="name"
+		:autocomplete="autocomplete"
 		/>
 	  </template>
 	  <textarea v-else
        class="ui-textarea-inner"
-         
+       :name="name"
+       :placeholder="placeholder"
+       :minLength="minLength"
+       :maxLength="maxLength"  
 	  >
 	  	
 	  </textarea>
@@ -35,7 +40,14 @@
 			placeholder:{
 				type:[Number,String],
 				default:""
-			}
+			},
+			autocomplete:{
+			   type:String,
+			   default:"off"
+			},
+			name:String,
+			minLength:Number,
+			maxLength:Number,
 		}
 	}
 </script>
