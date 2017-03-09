@@ -1,10 +1,15 @@
 <template>
-	<div :class="[type==='textarea'?'ui-textarea':'ui-input']">
+	<div :class="[type==='textarea'?'ui-textarea':'ui-input',
+     {
+       'ui-input-group':$slots.pre||$slots.post
+     }
+   
+	]">
 
 	   <template v-if="type!=='textarea'">
-	    <div class="ui-input-pre" v-if="$slots.pre">
+	    <span class="ui-input-pre" v-if="$slots.pre">
 	    	<slot name="pre"></slot>
-	    </div>
+	    </span>
 	   	<i class="ui-input-icon" :class="'ui-icon-'+icon" v-if="icon"></i>
 		<input type="text" 
 		:class="['ui-input-inner',size?'ui-input-'+size:'']" 
@@ -14,6 +19,9 @@
 		:value="currentValue"
 		@focus="handleFocus"
 		/>
+	    <span class="ui-input-post" v-if="$slots.post">
+	    	<slot name="post"></slot>
+	    </span>
 	  </template>
 	  <textarea v-else
        class="ui-textarea-inner"
