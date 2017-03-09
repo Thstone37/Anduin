@@ -14,6 +14,9 @@
 		padding:3px 10px;
 		width:100%;
 		box-sizing:border-box;
+		&:focus{
+			border-color:$input-border-focus-color;
+		}
 	}
 	.ui-input-icon{
 		color:$input-default-border-color;
@@ -34,4 +37,16 @@
 }
 .ui-input-icon+.ui-input-inner{
 	padding-right:36px; 
+}
+.ui-textarea{
+	width:400px;
+	.ui-textarea-inner{
+		outline:none;
+		width:100%;
+		border:1px solid $input-default-border-color;
+		border-radius: $input-border-radius;
+	}
+	.ui-textarea-inner:focus{
+		border-color:$input-border-focus-color;
+	}
 }

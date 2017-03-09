@@ -9,6 +9,7 @@
 		:name="name"
 		:autocomplete="autocomplete"
 		:value="currentValue"
+		@focus="hadleFocus"
 		/>
 	  </template>
 	  <textarea v-else
@@ -16,7 +17,9 @@
        :name="name"
        :placeholder="placeholder"
        :minLength="minLength"
-       :maxLength="maxLength"  
+       :maxLength="maxLength"
+       :rows="rows"
+       @focus="handleFocus"  
 	  >
 	  	
 	  </textarea>
@@ -47,6 +50,10 @@
 			   type:String,
 			   default:"off"
 			},
+			rows:{
+				type:Number,
+				default:2
+			},
 			name:String,
 			minLength:Number,
 			maxLength:Number,
@@ -60,6 +67,11 @@
 	    	currentValue:function(val){
 	    		console.log(val);
 	    		this.currentValue=val;
+	    	}
+	    },
+	    methods:{
+	    	handleFocus(e){
+	    		this.$emit("focus",e);
 	    	}
 	    }
 	}

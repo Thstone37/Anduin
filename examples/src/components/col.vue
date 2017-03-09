@@ -141,6 +141,11 @@
            <ui-input icon="arrowUp" placeholder="请输入内容"></ui-input>
 		</ui-col>
 	</ui-row>
+	<ui-row>
+		<ui-col :span="24">
+           <ui-input icon="arrowUp" placeholder="请输入内容" type="textarea"></ui-input>
+		</ui-col>
+	</ui-row>
 	</div>
 </template>
 <script>
