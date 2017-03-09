@@ -37,6 +37,17 @@
 	}
 	&.ui-input-group{
 		width:100%;
+		display: inline-table;
+		.ui-input-inner{
+			display: table-cell;
+		}
+		.ui-input-pre,.ui-input-post{
+			display: table-cell;
+			border-radius:$input-border-radius;
+			border:1px solid $input-default-border-color;
+			width:1%;
+		}
+
 	}
 }
 .ui-input-icon+.ui-input-inner{

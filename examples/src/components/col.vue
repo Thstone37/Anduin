@@ -138,7 +138,7 @@
 	</ui-row>
 	<ui-row>
 		<ui-col :span="24">
-           <ui-input icon="arrowUp" placeholder="请输入内容">
+           <ui-input placeholder="请输入内容">
            		<span slot="pre">hello</span>
            		<span slot="post">World</span>
            </ui-input>
