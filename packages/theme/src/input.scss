@@ -3,10 +3,6 @@
 	position: relative;
 	font-size:14px;
 	width:180px;
-	.ui-input-pre,.ui-input-post{
-       background-color: $input-prepost-backgroud-color;
-       padding:0px 5px;
-	}
 	.ui-input-inner{
 		height: 36px;
 		line-height: 36px;
@@ -50,6 +46,18 @@
 			border-radius:$input-border-radius;
 			border:1px solid $input-default-border-color;
 			width:1%;
+	       	background-color: $input-prepost-backgroud-color;
+       		padding:0px 5px;
+		}
+		.ui-input-pre{
+			border-bottom-right-radius:0;
+			border-top-right-radius:0;
+			border-right:0;
+		}
+		.ui-input-post{
+		    border-bottom-left-radius:0;
+			border-top-left-radius:0;
+			border-left:0;
 		}
 
 	}
