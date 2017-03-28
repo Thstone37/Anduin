@@ -3,6 +3,10 @@
 	position: relative;
 	font-size:14px;
 	width:180px;
+	.ui-input-pre,.ui-input-post{
+       background-color: $input-prepost-backgroud-color;
+       padding:0px 5px;
+	}
 	.ui-input-inner{
 		height: 36px;
 		line-height: 36px;
