@@ -1,7 +1,9 @@
 <template>
 	<div :class="[type==='textarea'?'ui-textarea':'ui-input',
      {
-       'ui-input-group':$slots.pre||$slots.post
+       'ui-input-group':$slots.pre||$slots.post,
+       'ui-input-group-pre':$slots.pre,
+       'ui-input-group-post':$slots.post
      }
    
 	]">

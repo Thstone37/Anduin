@@ -61,6 +61,18 @@
 		}
 
 	}
+	&.ui-input-group-pre{
+         .ui-input-inner{
+         	border-top-left-radius:0;
+         	border-bottom-left:0;
+         }
+	}
+	&.ui-input-group-post{
+		 .ui-input-inner{
+         	border-top-right-radius:0;
+         	border-bottom-right-radius:0;
+         }
+	}
 }
 .ui-input-icon+.ui-input-inner{
 	padding-right:36px; 
