@@ -12,7 +12,7 @@
 	    <span class="ui-input-pre" v-if="$slots.pre">
 	    	<slot name="pre"></slot>
 	    </span>
-	   	<i class="ui-input-icon" :class="'ui-icon-'+icon" v-if="icon"></i>
+	   	<i class="ui-input-icon" :class="['ui-icon-'+icon]" v-if="icon"></i>
 		<input type="text" 
 		:class="['ui-input-inner',size?'ui-input-'+size:'']" 
 		:placeholder="placeholder"

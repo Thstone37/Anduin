@@ -1,9 +1,10 @@
 <template>
 	<div class="ui-select">
 		<ui-input 
+    ref="inputRef"
     :placeholder="currentPlaceholder"
-    icon="arrowDown"
-    
+    :icon="iconClass"
+    @click="handleIconClick"
     ></ui-input>
     <transition>
       <ui-select-dropdown>
@@ -13,16 +14,18 @@
 	</div>
 </template>
 <script>
-    import emit from "../../../src/mixins/emit.js";
-    import UiInput from "../../input/src/input.vue";
-    import UiOption from "../../option/src/option.vue";
-    import UiOptionGroup from "../../option-group/src/option-group.vue";
-    import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
+  import emit from "../../../src/mixins/emit.js";
+  import UiInput from "../../input/src/input.vue";
+  import UiOption from "../../option/src/option.vue";
+  import UiOptionGroup from "../../option-group/src/option-group.vue";
+  import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
+  import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
 	export default{
         name:"UiSelect",
         componentName:"UiSelect",
         mixins:[emit],
         props:{
+          value:{},
           placeholder:{
             type:String,
             default:""
@@ -30,18 +33,49 @@
         },
         data(){
           return{
-            currentPlaceholder:this.placeholder
+            currentPlaceholder:this.placeholder,
+            visible:false
           }
         },
         watch:{
           // placeholder(val){
           //   this.currentPlaceholder = val;
           // }
+          visible(val){
+            if(!val){
+              this.handleIconPostive();
+            }else{
+              this.handleIconNegative();
+            }
+          }
         },
         computed:{
            iconClass:function(){
-            
+            return "arrowDown"
            }
+        },
+        methods:{
+          handleIconClick:function(){
+          
+          },
+          handleIconPostive:function(){
+             let icon = this.$el.querySelector("ui-input-icon");
+             if(icon){
+              removeClass(icon,"is-reverse")
+             } 
+          },
+          handleIconNegative:function(){
+             let icon = this.$el.querySelector("ui-input-icon");
+             if(icon){
+                addClass(icon,"is-reverse")
+             }
+          },
+          handleOpen(){
+            this.visible = true;
+          },
+          handleClose(){
+            this.visible = false;
+          }
         },
         components:{
           UiInput, 

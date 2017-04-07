@@ -1,5 +1,9 @@
 .ui-select{
 	.ui-input{
+		.ui-input-icon.is-reverse{
+	      transition: transform .3s;
+          transform:rotate(180deg);
+		}
 		.ui-input-inner{
 			cursor:pointer;
 		}
