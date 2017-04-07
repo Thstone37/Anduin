@@ -33,8 +33,7 @@
        :maxLength="maxLength"
        :rows="rows"
        @focus="handleFocus"  
-	  >
-	  	
+	  >	  	
 	  </textarea>
 	</div>
 </template>

@@ -7,7 +7,7 @@
   url('./src/fonts/iconfont.svg?t=1488943189191#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.iconfont {
+[class^="ui-icon-"], [class*="ui-icon-"] {
   font-family:"iconfont" !important;
   font-size:16px;
   font-style:normal;
@@ -23,7 +23,7 @@
 
 .icon-minus:before { content: "\e622"; }
 
-.icon-shangjiantou:before { content: "\e600"; }
+.ui-icon-arrowUp:before { content: "\e600"; }
 
-.icon-xiajiantou:before { content: "\e601"; }
+.ui-icon-arrowDown:before { content: "\e601"; }
 
