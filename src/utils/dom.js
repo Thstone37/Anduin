@@ -1,4 +1,8 @@
 
+import Vue from "Vue";
+const isServer=Vue.prototype.$isServer;
+
+
 /*function to test a DOM element whether has a special Class*/
 export  function hasClass(el,cls){
   if(!el||!cls) return false;
@@ -48,7 +52,38 @@ export function removeClass(el,cls){
       }
    	}
    }
-
 }
 
+/*bind event function*/
 
+export const on=(function(){
+    if(!isServer&&document.addEvenListener){
+    	return function(element,event,handler){
+    		if(element && event && handler){
+    			element.addEvenListener(event,handler,false);
+    		}
+    	}
+    }else{
+    	return function(element,event,handler){
+    		if(element && event && handler){
+    			element.attachEvent('on' +event,handler);
+    		}
+    	}
+    }
+})()
+
+export const off=(function(){
+  if(!isServer && document.removeEventListener){
+     return function(element,event,handler){
+        if(element && event){
+        	element.removeEventListener(event,handler,false);
+        }
+     }
+  }else{
+      return function(element,event,handler){
+      	if(element&&event){
+      		element.detachEvent('on' + event,handler);
+      	}
+      }
+  }
+})()
