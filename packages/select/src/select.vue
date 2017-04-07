@@ -1,7 +1,9 @@
 <template>
 	<div class="ui-select">
 		<input type="text"/>
-		<slot></slot>
+    <transition>
+		  <slot></slot>
+    </transition>
 	</div>
 </template>
 <script>
