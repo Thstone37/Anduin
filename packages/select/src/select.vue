@@ -5,6 +5,7 @@
     :placeholder="currentPlaceholder"
     :icon="iconClass"
     @click="handleIconClick"
+    @focus="handleFocus"
     ></ui-input>
     <transition>
       <ui-select-dropdown>
@@ -51,21 +52,21 @@
         },
         computed:{
            iconClass:function(){
-            return "arrowDown"
+            return "arrowUp"
            }
         },
         methods:{
           handleIconClick:function(){
-          
+             this.visible=!this.visible;
           },
           handleIconPostive:function(){
-             let icon = this.$el.querySelector("ui-input-icon");
+             let icon = this.$el.querySelector(".ui-input-icon");
              if(icon){
               removeClass(icon,"is-reverse")
              } 
           },
           handleIconNegative:function(){
-             let icon = this.$el.querySelector("ui-input-icon");
+             let icon = this.$el.querySelector(".ui-input-icon");
              if(icon){
                 addClass(icon,"is-reverse")
              }
@@ -75,6 +76,9 @@
           },
           handleClose(){
             this.visible = false;
+          },
+          handleFocus(){
+            this.visible=true;
           }
         },
         components:{

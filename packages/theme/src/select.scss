@@ -1,8 +1,15 @@
 .ui-select{
 	.ui-input{
+		.ui-input-icon{
+			font-size: 14px;
+		    transition: transform .3s;
+		    transform: translateY(-50%) rotate(180deg);
+		    line-height: 16px;
+		    top: 50%;
+		    cursor: pointer;			
+		}
 		.ui-input-icon.is-reverse{
-	      transition: transform .3s;
-          transform:rotate(180deg);
+          transform: translateY(-50%);
 		}
 		.ui-input-inner{
 			cursor:pointer;

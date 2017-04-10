@@ -35,6 +35,12 @@
       left:50%;
       transform:translate(-50%,-50%);
 	}
+	.ui-input-icon:after{
+		display: inline-block;
+		content:"";
+		height:100%;
+		vertical-align: middle;
+	}
 	&.ui-input-group{
 		width:100%;
 		display: inline-table;
