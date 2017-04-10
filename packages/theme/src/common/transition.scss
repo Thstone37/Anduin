@@ -1,0 +1,14 @@
+
+@import "./var.scss";
+
+.ui-zoom-in-down-enter,
+.ui-zoom-in-down-leave-active{
+   opacity: 0;
+   transform:scaleY(0);
+}
+.ui-zoom-in-down-enter-active{
+	opacity: 1;
+	transform:scaleY(1);
+	transition:$zoom-transition;
+	transform-origin:center bottom;
+}

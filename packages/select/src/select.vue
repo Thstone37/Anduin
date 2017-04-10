@@ -8,7 +8,7 @@
     @focus="handleFocus"
     @mousedown.native="handleMouseDown"
     ></ui-input>
-    <transition>
+    <transition name="ui-zoom-in-down">
       <ui-select-dropdown>
         <slot></slot>
       </ui-select-dropdown>
