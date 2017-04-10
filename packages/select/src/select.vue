@@ -10,7 +10,9 @@
     ></ui-input>
     <transition name="ui-zoom-in-down">
       <ui-select-dropdown>
-        <slot></slot>
+        <ui-scroll-bar>
+          <slot></slot>
+        </ui-scroll-bar>
       </ui-select-dropdown>
     </transition>
 	</div>
@@ -21,6 +23,7 @@
   import UiOption from "../../option/src/option.vue";
   import UiOptionGroup from "../../option-group/src/option-group.vue";
   import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
+  import UiScrollBar from "../../scroll-bar/src/scroll-bar.js";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
   import clickout from "../../../src/utils/clickout.js"
 	export default{
@@ -94,7 +97,8 @@
           UiInput, 
           UiOption,
           UiOptionGroup,
-          UiSelectDropdown
+          UiSelectDropdown,
+          UiScrollBar
         }
 	}
 </script>
