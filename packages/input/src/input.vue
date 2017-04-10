@@ -77,7 +77,6 @@
 	    },
 	    watch:{
 	    	currentValue:function(val){
-	    		console.log(val);
 	    		this.currentValue=val;
 	    	}
 	    },

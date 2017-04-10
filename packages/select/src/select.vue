@@ -6,6 +6,7 @@
     :icon="iconClass"
     @click="handleIconClick"
     @focus="handleFocus"
+    @mousedown.native="handleMouseDown"
     ></ui-input>
     <transition>
       <ui-select-dropdown>
@@ -77,11 +78,16 @@
             this.visible = true;
           },
           handleClose(){
-            console.log("v-clickout")
             this.visible = false;
           },
           handleFocus(){
             this.visible=true;
+          },
+          handleMouseDown(e){
+            if(e.target.tagName !== "INPUT") return;
+              this.visible = !this.visible;
+              e.preventDefault();
+            
           }
         },
         components:{
