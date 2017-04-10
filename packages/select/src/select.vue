@@ -1,5 +1,5 @@
 <template>
-	<div class="ui-select">
+	<div class="ui-select" v-clickout="handleClose">
 		<ui-input 
     ref="inputRef"
     :placeholder="currentPlaceholder"
@@ -21,10 +21,12 @@
   import UiOptionGroup from "../../option-group/src/option-group.vue";
   import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
+  import clickout from "../../../src/utils/clickout.js"
 	export default{
         name:"UiSelect",
         componentName:"UiSelect",
         mixins:[emit],
+        directives:{clickout},
         props:{
           value:{},
           placeholder:{
@@ -75,6 +77,7 @@
             this.visible = true;
           },
           handleClose(){
+            console.log("v-clickout")
             this.visible = false;
           },
           handleFocus(){

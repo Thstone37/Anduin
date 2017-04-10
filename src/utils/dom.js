@@ -56,11 +56,11 @@ export function removeClass(el,cls){
 
 /*bind event function*/
 
-export const on=(function(){
-    if(!isServer&&document.addEvenListener){
+export const on = (function(){
+    if(!isServer&&document.addEventListener){
     	return function(element,event,handler){
     		if(element && event && handler){
-    			element.addEvenListener(event,handler,false);
+    			element.addEventListener(event,handler,false);
     		}
     	}
     }else{
