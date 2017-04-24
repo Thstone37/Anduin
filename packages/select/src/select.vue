@@ -9,7 +9,8 @@
     @mousedown.native="handleMouseDown"
     ></ui-input>
     <transition name="ui-zoom-in-down">
-      <ui-select-dropdown>
+      <ui-select-dropdown
+       refs="popper" v-show="visible">
         <ui-scroll-bar>
           <slot></slot>
         </ui-scroll-bar>
@@ -36,7 +37,8 @@
           placeholder:{
             type:String,
             default:""
-          }
+          },
+          popperClass:String
         },
         data(){
           return{
