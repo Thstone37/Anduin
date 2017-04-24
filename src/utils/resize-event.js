@@ -21,4 +21,9 @@ const cancelAnimationFrame = (function() {
     return function(id) {
         return caf(id);
     }
-})()
+})();
+
+const resetTrigger=function(element){
+	const trigger=element._resetTrigger_;
+	
+}
