@@ -43,7 +43,8 @@
         data(){
           return{
             currentPlaceholder:this.placeholder,
-            visible:false
+            visible:false,
+            inputWidth:0,
           }
         },
         watch:{
@@ -93,6 +94,12 @@
               this.visible = !this.visible;
               e.preventDefault();
             
+          },
+          resetInputWidth(){
+            this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
+          },
+          handleResize(){
+            this.resetInputWidth();
           }
         },
         components:{

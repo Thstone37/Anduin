@@ -1,5 +1,5 @@
 <template>
-	<div class="ui-select-dropdown">
+	<div class="ui-select-dropdown" :style="{minWidth:minWidth}">
 		<slot></slot>
 	</div>
 </template>
@@ -22,11 +22,21 @@
 				}
 			}
 		},
+		data(){
+			return{
+				minWidth:''
+			}
+		},
 		computed:{
            popperClass(){
            	return this.$parent.popperClass;
            }
 		},
+		watch(){
+			'$parent.inputWidth'(){
+				this.minWidth=this.$parent.$el.getBoundingClientRect().width+"px";
+			}
+		}
 		mounted(){
 			console.log(this.$parent.$el);
 			this.referenceElm=this.$parent.$refs.inputRef.$el;
