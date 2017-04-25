@@ -54,5 +54,9 @@ const scrollListener = function(event) {
     });
 };
 const attachEvent = isServer ? function() {} : document.attachEvent;
-const DOM_PREFIXES="webkit ms o moz".split(" ");
-const START_EVENTS="webkitAnimationStart animationStart "
+const DOM_PREFIXES = "webkit ms o moz".split(" ");
+const START_EVENTS = "webkitAnimationStart animationStart oAnimationStart MSAnimationStart".split(" ");
+const RESIZE_ANIMATION_NAME = "resizeAnim";
+let animation = false;
+let keyFramePrefix = "";
+let animationStartEvent = "animationStartEvent";
