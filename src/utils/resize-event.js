@@ -60,3 +60,10 @@ const RESIZE_ANIMATION_NAME = "resizeAnim";
 let animation = false;
 let keyFramePrefix = "";
 let animationStartEvent = "animationStartEvent";
+
+if (!attachEvent && !isServer) {
+    const testElement = document.createElement("fakeelement");
+    if (testElement.style.animationName !== undefined) {
+        animation = true;
+    }
+}
