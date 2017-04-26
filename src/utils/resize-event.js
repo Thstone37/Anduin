@@ -83,6 +83,14 @@ if (!attachEvent && !isServer) {
 let StyleCreated = false;
 const createStyle = function() {
     if (!StyleCreated && !isServer) {
-        const animationKeyframes = `@${keyFramePrefix}keyframes ${RESIZE_ANIMATION_NAME} {from {opacity:0;} to {opacity:0;}}`
+        const animationKeyframes = `@${keyFramePrefix}keyframes ${RESIZE_ANIMATION_NAME} {from {opacity:0;} to {opacity:0;}}`;
+        const animationStyle=`${keyFramePrefix}animation:1ms ${RESIZE_ANIMATION_NAME}`;
+
+        const css=`${animationKeyframes}
+                   .resize-triggers{ ${animationStyle} visibility:hidden;opacity:0;}
+                   .resize-triggers, .resize-triggers > div, .contract-trigger:before{ content:\"\";display:block;postion:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;}
+                   .resize-triggers, .resize-triggers > div {backgroud:#eee;overflow:auto}
+
+                  `
     }
 }
