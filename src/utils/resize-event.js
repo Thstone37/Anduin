@@ -80,9 +80,9 @@ if (!attachEvent && !isServer) {
     }
 }
 
-let StyleCreated=false;
-const createStyle=function(){
-    if(!StyleCreated&&!isServer){
-        
+let StyleCreated = false;
+const createStyle = function() {
+    if (!StyleCreated && !isServer) {
+        const animationKeyframes = `@${keyFramePrefix}keyframes ${RESIZE_ANIMATION_NAME} {from {opacity:0;} to {opacity:0;}}`
     }
 }
