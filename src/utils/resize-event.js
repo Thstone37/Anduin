@@ -79,3 +79,10 @@ if (!attachEvent && !isServer) {
         }
     }
 }
+
+let StyleCreated=false;
+const createStyle=function(){
+    if(!StyleCreated&&!isServer){
+        
+    }
+}
