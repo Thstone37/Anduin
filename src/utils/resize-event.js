@@ -106,3 +106,15 @@ const createStyle = function() {
         StyleCreated=true;
     }
 }
+export const addResizeListener=function(element,fn){
+    if(isServer) return;
+    if(attachEvent){
+        element.attachEvent("onresize",fn);
+    }else{
+        if(element._resizeTrigger_){
+            if(getComputedStyle(element).position==='static'){
+                element.style.position='relative';
+            }
+        }
+    }
+}
