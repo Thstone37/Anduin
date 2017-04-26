@@ -90,7 +90,19 @@ const createStyle = function() {
                    .resize-triggers{ ${animationStyle} visibility:hidden;opacity:0;}
                    .resize-triggers, .resize-triggers > div, .contract-trigger:before{ content:\"\";display:block;postion:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;}
                    .resize-triggers, .resize-triggers > div {backgroud:#eee;overflow:auto}
+                   .contract-trigger:before{width:200%;height:200%;}
+                  `;
+        const head=document.head||document.getElementsByTagName("head")[0];
+        const style=document.createElement("style");
 
-                  `
+        style.type="text/css";
+        if(style.styleSheet){
+           style.styleSheet.cssText=css;
+        }else{
+            style.appendChild(document.createTextNode(css));
+        } 
+
+        head.appendChild(style);
+        StyleCreated=true;
     }
 }
