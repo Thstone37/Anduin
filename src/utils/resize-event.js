@@ -24,7 +24,7 @@ const cancelAnimationFrame = (function() {
 })();
 
 const resetTrigger = function(element) {
-    const trigger = element._resetTrigger_;
+    const trigger = element._resizeTrigger_;
     const expand = trigger.firstElementChild;
     const contract = trigger.lastElementChild;
     const expandChild = expand.firstElementChild;
@@ -84,36 +84,53 @@ let StyleCreated = false;
 const createStyle = function() {
     if (!StyleCreated && !isServer) {
         const animationKeyframes = `@${keyFramePrefix}keyframes ${RESIZE_ANIMATION_NAME} {from {opacity:0;} to {opacity:0;}}`;
-        const animationStyle=`${keyFramePrefix}animation:1ms ${RESIZE_ANIMATION_NAME}`;
+        const animationStyle = `${keyFramePrefix}animation:1ms ${RESIZE_ANIMATION_NAME}`;
 
-        const css=`${animationKeyframes}
+        const css = `${animationKeyframes}
                    .resize-triggers{ ${animationStyle} visibility:hidden;opacity:0;}
                    .resize-triggers, .resize-triggers > div, .contract-trigger:before{ content:\"\";display:block;postion:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;}
                    .resize-triggers, .resize-triggers > div {backgroud:#eee;overflow:auto}
                    .contract-trigger:before{width:200%;height:200%;}
                   `;
-        const head=document.head||document.getElementsByTagName("head")[0];
-        const style=document.createElement("style");
+        const head = document.head || document.getElementsByTagName("head")[0];
+        const style = document.createElement("style");
 
-        style.type="text/css";
-        if(style.styleSheet){
-           style.styleSheet.cssText=css;
-        }else{
+        style.type = "text/css";
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        } else {
             style.appendChild(document.createTextNode(css));
-        } 
+        }
 
         head.appendChild(style);
-        StyleCreated=true;
+        StyleCreated = true;
     }
 }
-export const addResizeListener=function(element,fn){
-    if(isServer) return;
-    if(attachEvent){
-        element.attachEvent("onresize",fn);
-    }else{
-        if(element._resizeTrigger_){
-            if(getComputedStyle(element).position==='static'){
-                element.style.position='relative';
+export const addResizeListener = function(element, fn) {
+    if (isServer) return;
+    if (attachEvent) {
+        element.attachEvent("onresize", fn);
+    } else {
+        if (element._resizeTrigger_) {
+            if (getComputedStyle(element).position === 'static') {
+                element.style.position = 'relative';
+            }
+
+            createStyle();
+            element._resizeLast_={};
+            element._resizeListeners_=[];
+            const resizeTrigger=element._resizeTrigger_=document.createElement("div");
+            resizeTrigger.className="resize-triggers";
+            resizeTrigger.innerHTML="<div class='expand-trigger'><div></div></div><div class='contract-trigger></div>'";
+            element.appendChild(resizeTrigger);
+
+            resetTrigger(element);
+            element.addEventListener('scroll',scrollListener,true);
+
+            if(animationStartEvent){
+                resizeTrigger.addEventListener(animationStartEvent,function(){
+                    
+                })
             }
         }
     }
