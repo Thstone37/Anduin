@@ -54,23 +54,27 @@ const scrollListener = function(event) {
     });
 };
 const attachEvent = isServer ? function() {} : document.attachEvent;
-const DOM_PREFIXES = "webkit ms o moz".split(" ");
+const DOM_PREFIXES = "webkit moz o ms".split(" ");
 const START_EVENTS = "webkitAnimationStart animationStart oAnimationStart MSAnimationStart".split(" ");
 const RESIZE_ANIMATION_NAME = "resizeAnim";
 let animation = false;
 let keyFramePrefix = "";
-let animationStartEvent = "animationStartEvent";
+let animationStartEvent = "animationstart";
 
 if (!attachEvent && !isServer) {
     const testElement = document.createElement("fakeelement");
     if (testElement.style.animationName !== undefined) {
         animation = true;
     }
-    if(animation===false){
-        let prefix==='';
-        for(var i=0,len=DOM_PREFIXES.length;i<len;i++){
-            if(testElement.style[DOM_PREFIXES[i]+'AnimationName']!==undefined){
-                
+    if (animation === false) {
+        let prefix = '';
+        for (var i = 0, len = DOM_PREFIXES.length; i < len; i++) {
+            if (testElement.style[DOM_PREFIXES[i] + 'AnimationName'] !== undefined) {
+                prefix = DOM_PREFIXES[i];
+                keyFramePrefix = "-" + prefix.toLowerCase() + "-";
+                animationStartEvent = START_EVENTS[i];
+                animation = true;
+                break;
             }
         }
     }
