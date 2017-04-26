@@ -66,4 +66,12 @@ if (!attachEvent && !isServer) {
     if (testElement.style.animationName !== undefined) {
         animation = true;
     }
+    if(animation===false){
+        let prefix==='';
+        for(var i=0,len=DOM_PREFIXES.length;i<len;i++){
+            if(testElement.style[DOM_PREFIXES[i]+'AnimationName']!==undefined){
+                
+            }
+        }
+    }
 }
