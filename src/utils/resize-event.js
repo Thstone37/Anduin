@@ -128,10 +128,25 @@ export const addResizeListener = function(element, fn) {
             element.addEventListener('scroll',scrollListener,true);
 
             if(animationStartEvent){
-                resizeTrigger.addEventListener(animationStartEvent,function(){
+                resizeTrigger.addEventListener(animationStartEvent,function(event){
+                    if(event.animationName=="RESIZE_ANIMATION_NAME"){
+                        resetTrigger(element);
+                    }
                     
                 })
             }
         }
+        element._resizeListeners_.push(fn);
     }
 }
+ export const removeResizeListener=function(element,fn){
+   if(attachEvent){
+      element.detachEvent("onresize",fn)
+   }else{
+     element._resizeListeners_.splice(element._resizeListeners_.indexOf(fn),1);
+     if(!element._resizeListeners_.length){
+       element.removeEventListener('scroll', scrollListener);
+       element._resizeTrigger_=!element.removeChild(element._resizeTrigger_);
+     }
+   }
+ }
