@@ -38,7 +38,7 @@ const resetTrigger = function(element) {
 };
 
 const checkTrigger = function(element) {
-    return element.offsetWidth !== element._resizeLast_.width || element._resizeLast_.height;
+    return element.offsetWidth !== element._resizeLast_.width || element.offsetHeight !== element._resizeLast_.height;
 };
 const scrollListener = function(event) {
     resetTrigger(this);
@@ -46,7 +46,7 @@ const scrollListener = function(event) {
     this._resizeRAF_ = requestAnimationFrame(() => {
         if (checkTrigger(this)) {
             this._resizeLast_.width = this.offsetWidth;
-            this._resizeLast_.Height = this.offsetHeight;
+            this._resizeLast_.height = this.offsetHeight;
             this._resizeListeners_.forEach((fn) => {
                 fn.call(this, event);
             });
@@ -117,36 +117,36 @@ export const addResizeListener = function(element, fn) {
             }
 
             createStyle();
-            element._resizeLast_={};
-            element._resizeListeners_=[];
-            const resizeTrigger=element._resizeTrigger_=document.createElement("div");
-            resizeTrigger.className="resize-triggers";
-            resizeTrigger.innerHTML="<div class='expand-trigger'><div></div></div><div class='contract-trigger></div>'";
+            element._resizeLast_ = {};
+            element._resizeListeners_ = [];
+            const resizeTrigger = element._resizeTrigger_ = document.createElement("div");
+            resizeTrigger.className = "resize-triggers";
+            resizeTrigger.innerHTML = "<div class='expand-trigger'><div></div></div><div class='contract-trigger></div>'";
             element.appendChild(resizeTrigger);
 
             resetTrigger(element);
-            element.addEventListener('scroll',scrollListener,true);
+            element.addEventListener('scroll', scrollListener, true);
 
-            if(animationStartEvent){
-                resizeTrigger.addEventListener(animationStartEvent,function(event){
-                    if(event.animationName=="RESIZE_ANIMATION_NAME"){
+            if (animationStartEvent) {
+                resizeTrigger.addEventListener(animationStartEvent, function(event) {
+                    if (event.animationName == "RESIZE_ANIMATION_NAME") {
                         resetTrigger(element);
                     }
-                    
+
                 })
             }
         }
         element._resizeListeners_.push(fn);
     }
 }
- export const removeResizeListener=function(element,fn){
-   if(attachEvent){
-      element.detachEvent("onresize",fn)
-   }else{
-     element._resizeListeners_.splice(element._resizeListeners_.indexOf(fn),1);
-     if(!element._resizeListeners_.length){
-       element.removeEventListener('scroll', scrollListener);
-       element._resizeTrigger_=!element.removeChild(element._resizeTrigger_);
-     }
-   }
- }
+export const removeResizeListener = function(element, fn) {
+    if (attachEvent) {
+        element.detachEvent("onresize", fn)
+    } else {
+        element._resizeListeners_.splice(element._resizeListeners_.indexOf(fn), 1);
+        if (!element._resizeListeners_.length) {
+            element.removeEventListener('scroll', scrollListener);
+            element._resizeTrigger_ = !element.removeChild(element._resizeTrigger_);
+        }
+    }
+}
