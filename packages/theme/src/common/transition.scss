@@ -2,11 +2,11 @@
 @import "./var.scss";
 
 .ui-zoom-in-down-enter-active,
-.ui-zoom-in-down-enter-leave{
+.ui-zoom-in-down-leave-active{
 	opacity: 1;
 	transform:scaleY(1);
 	transition:$zoom-transition;
-	transform-origin:center bottom;
+	transform-origin:center top;
 }
 .ui-zoom-in-down-enter,
 .ui-zoom-in-down-leave-active{
