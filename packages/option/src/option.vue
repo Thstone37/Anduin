@@ -11,7 +11,7 @@
 		name:"UiOption",
 
 		componentName:"UiOption",
-         
+        mixins:[emit],
         props:{
         	label:{
         		type:[String,Number],
@@ -20,11 +20,25 @@
         	value:{
         		type:[String,Number],
         		default:''
-        	}
+        	},
+            groupDisabled:{
+                type:Boolean,
+                
+            }
+        },
+        data(){
+            return{
+                disabled:{
+                    type:Boolean,
+                    default:false
+                },
+            }
         },
         methods:{
             selectOptionClick(){
-                
+               if(!this.disabled&&!this.groupDisabled){
+                 this.dispatch("UiSelect","handleOptionClick",this)
+               }
             }
         }
 
