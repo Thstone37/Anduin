@@ -1,5 +1,7 @@
 <template>
-	<li class="ui-option" data-value="value">
+	<li class="ui-option" data-value="value" @click.stop="selectOptionClick" :class="{
+      'selected':itemSelected
+    }">
     <slot><span>{{label}}</span></slot>
 	</li>  
 </template>
@@ -19,6 +21,11 @@
         		type:[String,Number],
         		default:''
         	}
+        },
+        methods:{
+            selectOptionClick(){
+                
+            }
         }
 
 	}
