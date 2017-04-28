@@ -57,6 +57,7 @@
               this.handleIconPostive();
             }else{
               this.handleIconNegative();
+              this.broadcast('UiSelectDropdown','updatePopper')
             }
           }
         },

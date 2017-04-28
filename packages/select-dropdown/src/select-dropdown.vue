@@ -16,8 +16,11 @@
 			popperOptions:{
 				default(){
 					return{
-						forceAbsolute:true,
-						gpuAcceleration:false,
+	                    modifiers:{
+	                        applyStyle:{
+	                            gpuAcceleration:false,
+	                        }
+	                    }
 					}
 				}
 			}
@@ -39,7 +42,7 @@
 		},
 		mounted(){
 			this.referenceElm=this.$parent.$refs.inputRef.$el;
-			this.$parent.popperElem=this.popperElm=this.$el;
+			this.$parent.popperElm=this.popperElm=this.$el;
 			this.$on("updatePopper",this.updatePopper);
 			this.$on("destoryPopper",this.destoryPopper);
 		}

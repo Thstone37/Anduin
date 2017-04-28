@@ -1,3 +1,7 @@
+/*
+  vue-popper mixins based on popper.js v1.0 
+  repos from https://github.com/FezVrasta/popper.js
+ */
 import Vue from "vue";
 import { PopupManager } from "./popup/index.js"
 const PopperJs = Vue.prototype.$isServer ? function() {} : require("./popper.es5.js");
@@ -14,7 +18,11 @@ export default {
             type: Object,
             default () {
                 return {
-                    gpuAcceleration: false
+                    modifiers:{
+                        applyStyle:{
+                            gpuAcceleration:false,
+                        }
+                    }
                 }
             }
         },
@@ -49,10 +57,9 @@ export default {
     },
     methods: {
         createPopper() {
-            console.log("ok");
             if (this.$isServer) return;
             this.currentPlacement = this.currentPlacement || this.placement;
-            if (!/^(top|bottom|left|right)(-start|-end)?$/g.text(this.currentPlacement)) {
+            if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {
                 return;
             }
             const options = this.popperOptions;
@@ -63,23 +70,22 @@ export default {
             }
             if (!popper || !reference) return;
 
-            if (this.appendArrow) this.appendArrow(popper);
-            if (this.appendBody) document.body.appendChild(this.popperElm);
+            if (this.visibleArrow) this.appendArrow(popper);
+            if (this.appendToBody) document.body.appendChild(this.popperElm);
 
             if (this.PopperJs && this.PopperJs.destory) {
                 this.PopperJs.destory();
             }
             options.placement = this.currentPlacement;
             options.offset = this.offset;
-            this.PopperJs = new PopperJs(reference, popper, options);
-
-            this.PopperJs.onCreate(_ => {
+            options.onCreate=data =>{
                 this.$emit("created", this);
                 this.resetTransformOrigin();
                 this.$nextTick(this.updatePopper)
-            })
-            this.PopperJs._popper.style.zIndex = PopupManager.nextZIndex();
-            this.popperElm.addEventListened("click", stop);
+            }
+            this.PopperJs = new PopperJs(reference, popper,options);
+            this.PopperJs.popper.style.zIndex = PopupManager.nextZIndex();
+            this.popperElm.addEventListener("click", stop);
         },
         updatePopper() {
             this.PopperJs ? this.PopperJs.update() : this.createPopper();
@@ -111,9 +117,9 @@ export default {
             right:'left',
             left:"right",
           }
-          let placement=this.PopperJs._popper.getAttribute("x-placement").splice("-")[0];
+          let placement=this.PopperJs.popper.getAttribute("x-placement").split("-")[0];
           let origin = placementMap[placement];
-          this.PopperJs._popper.style.transformOrigin=['top','bottom'].indexOf(placement)>-1?`center ${origin}`:`${origin} center`;
+          this.PopperJs.popper.style.transformOrigin=['top','bottom'].indexOf(placement)>-1?`center ${origin}`:`${origin} center`;
         },
         appendArrow(element) {
             let hash;

@@ -136,7 +136,6 @@ export const addResizeListener = function(element, fn) {
                 })
             }
         }
-        console.log(element._resizeListeners_);
         element._resizeListeners_.push(fn);
     }
 }

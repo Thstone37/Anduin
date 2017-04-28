@@ -4,7 +4,7 @@ function broadcast(componentName,eventName,args){
 		if(name===componentName){
 			child.$emit.apply(child,[eventName].concat([args]))
 		}else{
-			broadcast.apply(child,[compnentName,eventName].concat([args]));
+			broadcast.apply(child,[componentName,eventName].concat([args]));
 		}
 	})
 }

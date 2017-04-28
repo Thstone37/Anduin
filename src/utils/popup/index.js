@@ -1,4 +1,4 @@
-import PopupManager from "./index.js";
+import PopupManager from "./popup-manager.js";
 
 export {
 	PopupManager
