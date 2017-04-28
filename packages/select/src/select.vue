@@ -10,7 +10,7 @@
     ></ui-input>
     <transition name="ui-zoom-in-down">
       <ui-select-dropdown
-       refs="popper" v-show="visible">
+       ref="popper" v-show="visible">
         <ui-scroll-bar>
           <slot></slot>
         </ui-scroll-bar>
@@ -26,7 +26,8 @@
   import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
   import UiScrollBar from "../../scroll-bar/src/scroll-bar.js";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
-  import clickout from "../../../src/utils/clickout.js"
+  import clickout from "../../../src/utils/clickout.js";
+  import {addResizeListener,removeResizeListener} from "../../../src/utils/resize-event.js"
 	export default{
         name:"UiSelect",
         componentName:"UiSelect",
@@ -101,6 +102,9 @@
           handleResize(){
             this.resetInputWidth();
           }
+        },
+        mounted(){
+            addResizeListener(this.$el,this.handleResize);
         },
         components:{
           UiInput, 

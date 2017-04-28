@@ -8,12 +8,8 @@ export default {
             type: String,
             default: "bottom"
         },
-        reference: {
-
-        },
-        popper: {
-
-        },
+        reference: {},
+        popper: {},
         popperOptions: {
             type: Object,
             default () {
@@ -29,7 +25,8 @@ export default {
         },
         offset: {
             default: 0,
-        }
+        },
+        value:Boolean
     },
     data() {
         return {
@@ -37,8 +34,22 @@ export default {
             currentPlacement:""
         }
     },
+    watch:{
+        value:{
+            immediate:true,
+            handler(val){
+              this.showPopper=val;
+              this.$emit('input',val)
+            }
+        },
+        showPopper(val){
+            val?this.updatePopper():this.destoryPopper();
+            this.$emit('input',val);
+        }
+    },
     methods: {
         createPopper() {
+            console.log("ok");
             if (this.$isServer) return;
             this.currentPlacement = this.currentPlacement || this.placement;
             if (!/^(top|bottom|left|right)(-start|-end)?$/g.text(this.currentPlacement)) {
@@ -73,10 +84,36 @@ export default {
         updatePopper() {
             this.PopperJs ? this.PopperJs.update() : this.createPopper();
         },
-        detoryPoper() {
+        destoryPopper() {
             if (this.PopperJs) {
                 this.resetTransformOrigin();
             }
+        },
+        doDestory(){
+          if(this.showPopper||!this.PopperJs) return;
+          this.PopperJs.destory();
+          this.PopperJs=null;
+        },
+        beforeDestory(){
+          this.doDestory();
+          if(this.popperElm&&this.popperElement.parentNode===document.body){
+            this.popperElm.removeEventListener("click",stop);
+            document.body.removeChild(this.popperElm);
+          }
+        },
+        deactivated(){
+          this.$options.beforeDestory[0].call(this);
+        },
+        resetTransformOrigin(){
+          let placementMap={
+            top:'bottom',
+            bottom:'top',
+            right:'left',
+            left:"right",
+          }
+          let placement=this.PopperJs._popper.getAttribute("x-placement").splice("-")[0];
+          let origin = placementMap[placement];
+          this.PopperJs._popper.style.transformOrigin=['top','bottom'].indexOf(placement)>-1?`center ${origin}`:`${origin} center`;
         },
         appendArrow(element) {
             let hash;

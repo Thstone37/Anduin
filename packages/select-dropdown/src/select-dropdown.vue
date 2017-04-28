@@ -32,13 +32,12 @@
            	return this.$parent.popperClass;
            }
 		},
-		watch(){
+		watch:{
 			'$parent.inputWidth'(){
 				this.minWidth=this.$parent.$el.getBoundingClientRect().width+"px";
 			}
-		}
+		},
 		mounted(){
-			console.log(this.$parent.$el);
 			this.referenceElm=this.$parent.$refs.inputRef.$el;
 			this.$parent.popperElem=this.popperElm=this.$el;
 			this.$on("updatePopper",this.updatePopper);
