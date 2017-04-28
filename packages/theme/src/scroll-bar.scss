@@ -1,9 +1,19 @@
+@import './common/var.scss';
 .ui-scroll-bar{
 	.ui-scroll-bar-list{
 		padding:0;
 		margin:0;
-		li{
+		li.ui-option{
 			list-style:none;
+			padding:8px 10px;
+			cursor:pointer;
+			&:hover{
+				background:$option-hover-bgColor;
+			}
+			&.selected{
+				background:$option-selected-bgColor;
+				color:$option-selected-color;
+			}
 		}
 		list-style: none;
 	}
