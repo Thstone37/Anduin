@@ -55,9 +55,10 @@
           visible(val){
             if(!val){
               this.handleIconPostive();
+              this.broadcast('UiSelectDropdown','destoryPopper');
             }else{
               this.handleIconNegative();
-              this.broadcast('UiSelectDropdown','updatePopper')
+              this.broadcast('UiSelectDropdown','updatePopper');
             }
           }
         },
