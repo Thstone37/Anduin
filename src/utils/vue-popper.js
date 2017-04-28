@@ -81,7 +81,7 @@ export default {
             options.onCreate=data =>{
                 this.$emit("created", this);
                 this.resetTransformOrigin();
-                this.$nextTick(this.updatePopper)
+                this.$nextTick(this.updatePopper);
             }
             this.PopperJs = new PopperJs(reference, popper,options);
             this.PopperJs.popper.style.zIndex = PopupManager.nextZIndex();
