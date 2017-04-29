@@ -34,9 +34,28 @@
                 },
             }
         },
+        computed:{
+          parent(){
+           let parent=this.$parent;
+           while(!parent.isSelect){
+            parent=parent.$parent;
+           }
+           return parent;
+          },
+          itemSelected(){
+            if(!this.parent.multiple){
+                return this.value===this.parent.value;
+            }else{
+                return this.parent.value.indexOf(this.value)>-1;
+            }
+          }
+        },
         methods:{
             selectOptionClick(){
+                console.log(!this.disabled);
+                console.log(this.groupDisabled);
                if(!this.disabled&&!this.groupDisabled){
+                 console.log(this);
                  this.dispatch("UiSelect","handleOptionClick",this);
                }
             }

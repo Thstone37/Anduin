@@ -47,6 +47,7 @@
             currentPlaceholder:this.placeholder,
             visible:false,
             inputWidth:0,
+            isSelect:true
           }
         },
         watch:{
