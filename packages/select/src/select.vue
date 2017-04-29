@@ -103,6 +103,9 @@
           },
           handleResize(){
             this.resetInputWidth();
+          },
+          handleOptionClick(option){
+
           }
         },
         mounted(){
