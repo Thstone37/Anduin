@@ -39,7 +39,8 @@
             type:String,
             default:""
           },
-          popperClass:String
+          popperClass:String,
+          multiple:Boolean
         },
         data(){
           return{
@@ -105,7 +106,10 @@
             this.resetInputWidth();
           },
           handleOptionClick(option){
-
+              if(!this.multiple){
+                this.$emit("input",option.value);
+                this.visible=false;
+              }
           }
         },
         mounted(){

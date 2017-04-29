@@ -37,7 +37,7 @@
         methods:{
             selectOptionClick(){
                if(!this.disabled&&!this.groupDisabled){
-                 this.dispatch("UiSelect","handleOptionClick",this)
+                 this.dispatch("UiSelect","handleOptionClick",this);
                }
             }
         }
