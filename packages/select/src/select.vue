@@ -70,13 +70,11 @@
           options(val){
             if(this.$isServer) return;
             this.optionsAllDisabled=val.length===val.filter(item =>item.disabled===true).length;
+            let inputs=this.$el.querySelector("input");
+            if([].indexOf.call(inputs,document.activeElement)===-1){
+              this.setSelected();
+            }
           }
-
-          let inputs=this.$el.querySelector("input");
-          if([].indexOf.call(inputs,document.activeElement)===-1){
-            this.setSelected();
-          }
-
         },
         computed:{
            iconClass:function(){
@@ -132,9 +130,12 @@
                 break;
               }
             }
+            if(options) return option;
           },
           setSelected(){
-
+            if(!this.multiple){
+              let option=this.getOption(this.value);
+            }
           },
           handleOptionClick(option){
               if(!this.multiple){
