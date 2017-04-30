@@ -21,6 +21,7 @@
         		type:[String,Number],
         		default:''
         	},
+            created:Boolean,
             groupDisabled:{
                 type:Boolean,
                 

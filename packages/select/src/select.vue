@@ -122,7 +122,7 @@
             this.resetInputWidth();
           },
           getOption(value){
-            let options;
+            let option;
             for(var i=0,len=this.cachedOptions.length;i<0;i++){
               const cachedOption=this.cachedOptions[i];
               if(cachedOption.value===value){
@@ -130,17 +130,24 @@
                 break;
               }
             }
-            if(options) return option;
+            if(option) return option;
+            const label=typeof value==="string"||typeof value==="number"?value:"";
+            var newOption={
+              value:value,
+              label:label
+            }
+            return newOption;
           },
           setSelected(){
             if(!this.multiple){
+              
               let option=this.getOption(this.value);
+              console.log(option);
             }
           },
           handleOptionClick(option){
               if(!this.multiple){
                 this.$emit("input",option.value);
-                console.log(this.value);
                 this.visible=false;
               }
           }
