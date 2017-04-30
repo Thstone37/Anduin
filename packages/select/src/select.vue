@@ -64,6 +64,7 @@
           // }
           value(val){
             this.setSelected();
+            this.$emit("change",val);
           },
           visible(val){
             if(!val){

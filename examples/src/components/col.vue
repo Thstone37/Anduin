@@ -133,7 +133,7 @@
 
 	<ui-row>
 		<ui-col :span="24">
-           <ui-select placeholder="请输入内容" v-model="value">
+           <ui-select placeholder="请输入内容" v-model="value" @change="showVal">
            	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
            </ui-select>
 		</ui-col>
@@ -166,6 +166,11 @@
 	     	value:'',
 	     	options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"广州",value:"3"},{label:"深圳",value:"4"},{label:"长沙",value:"5"}]
 	     }
+	   },
+	   methods:{
+	   	showVal:function(val){
+	   		console.log(val)
+	   	}
 	   },
 	   components: {
 	   	'menunav': require('./nav.vue')
