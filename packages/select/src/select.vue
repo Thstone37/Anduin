@@ -69,6 +69,11 @@
             if(!val){
               this.handleIconPostive();
               this.broadcast('UiSelectDropdown','destoryPopper');
+              if(!this.multiple){
+                if(this.selected){
+
+                }
+              }
             }else{
               this.handleIconNegative();
               this.broadcast('UiSelectDropdown','updatePopper');
@@ -174,7 +179,7 @@
           }
         },
         created(){
-          if(!this.multiple&&Array.isArray(this.value)){
+          if(!this.multiple&&!Array.isArray(this.value)){
             this.$emit("input",'');
           }
           this.$on("handleOptionClick",this.handleOptionClick);
