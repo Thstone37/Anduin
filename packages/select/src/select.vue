@@ -50,7 +50,8 @@
             isSelect:true,
             selected:this.multiple?[]:{},
             options:[],
-            optionsAllDisabled:false
+            optionsAllDisabled:false,
+            cachedOptions:[]
           }
         },
         watch:{
@@ -121,6 +122,16 @@
           },
           handleResize(){
             this.resetInputWidth();
+          },
+          getOption(value){
+            let options;
+            for(var i=0,len=this.cachedOptions.length;i<0;i++){
+              const cachedOption=this.cachedOptions[i];
+              if(cachedOption.value===value){
+                option=cachedOption;
+                break;
+              }
+            }
           },
           setSelected(){
 
