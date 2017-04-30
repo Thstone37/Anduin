@@ -2,7 +2,7 @@
 import UiSelect from "./src/select.vue";
 
 UiSelect.install=function(Vue){	
-	Vue.component(UiSelect.name,component);
+	Vue.component(UiSelect.name,UiSelect);
 }
 
 export default UiSelect;

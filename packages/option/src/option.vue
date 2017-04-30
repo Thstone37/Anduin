@@ -35,6 +35,11 @@
                 },
             }
         },
+        watch:{
+          value(){
+            if(!this.created) this.dispatch("UiSelect","setSelected");
+          }
+        },
         computed:{
           parent(){
            let parent=this.$parent;

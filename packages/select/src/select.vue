@@ -4,6 +4,7 @@
     ref="inputRef"
     :placeholder="currentPlaceholder"
     :icon="iconClass"
+    v-model="selectedLabel"
     @click="handleIconClick"
     @focus="handleFocus"
     @mousedown.native="handleMouseDown"
@@ -51,13 +52,20 @@
             selected:this.multiple?[]:{},
             options:[],
             optionsAllDisabled:false,
-            cachedOptions:[]
+            cachedOptions:[],
+            createdLabel:null,
+            createdSelected:false,
+            selectedLabel:''
           }
         },
         watch:{
           // placeholder(val){
           //   this.currentPlaceholder = val;
           // }
+          value(val){
+            console.log(val);
+            this.setSelected();
+          },
           visible(val){
             if(!val){
               this.handleIconPostive();
@@ -142,8 +150,23 @@
             if(!this.multiple){
               
               let option=this.getOption(this.value);
-              console.log(option);
+              if(option.created){
+                 this.createdLabel=option.label;
+                 this.createdSelected=true;
+              }else{
+                  this.createdSelected=false;
+              }
+              this.selectedLabel=option.label;
+              this.selected=option;
+              return;
             }
+            let result=[];
+            if(Array.isArray(this.value)){
+              this.value.forEach(value =>{
+                result.push(this.getOption(value));
+              });
+            }
+            this.selected=result;
           },
           handleOptionClick(option){
               if(!this.multiple){
@@ -154,6 +177,8 @@
         },
         created(){
           this.$on("handleOptionClick",this.handleOptionClick);
+          this.setSelected();
+          this.$on("setSelected",this.setSelected);
         },
         mounted(){
             addResizeListener(this.$el,this.handleResize);
