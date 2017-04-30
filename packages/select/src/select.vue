@@ -47,7 +47,8 @@
             currentPlaceholder:this.placeholder,
             visible:false,
             inputWidth:0,
-            isSelect:true
+            isSelect:true,
+            selected:this.multiple?[]:{}
           }
         },
         watch:{
@@ -107,9 +108,7 @@
             this.resetInputWidth();
           },
           handleOptionClick(option){
-            console.log(!this.multiple);
               if(!this.multiple){
-                console.log(option.value);
                 this.$emit("input",option.value);
                 this.visible=false;
               }
