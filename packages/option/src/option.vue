@@ -1,5 +1,5 @@
 <template>
-	<li class="ui-option" data-value="value" @click.stop="selectOptionClick" :class="{
+	<li class="ui-option" :data-value="value" @click.stop="selectOptionClick" :class="{
       'selected':itemSelected
     }">
     <slot><span>{{label}}</span></slot>

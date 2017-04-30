@@ -154,8 +154,6 @@
               }else{
                   this.createdSelected=false;
               }
-              console.log(option.label);
-              this.selectedLabel=option.label;
               this.selected=option;
               return;
             }
@@ -170,11 +168,15 @@
           handleOptionClick(option){
               if(!this.multiple){
                 this.$emit("input",option.value);
+                this.selectedLabel=option.label;
                 this.visible=false;
               }
           }
         },
         created(){
+          if(!this.multiple&&Array.isArray(this.value)){
+            this.$emit("input",'');
+          }
           this.$on("handleOptionClick",this.handleOptionClick);
           this.setSelected();
           this.$on("setSelected",this.setSelected);
