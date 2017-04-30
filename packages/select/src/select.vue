@@ -48,7 +48,9 @@
             visible:false,
             inputWidth:0,
             isSelect:true,
-            selected:this.multiple?[]:{}
+            selected:this.multiple?[]:{},
+            options:[],
+            optionsAllDisabled:false
           }
         },
         watch:{
@@ -63,7 +65,17 @@
               this.handleIconNegative();
               this.broadcast('UiSelectDropdown','updatePopper');
             }
+          },
+          options(val){
+            if(this.$isServer) return;
+            this.optionsAllDisabled=val.length===val.filter(item =>item.disabled===true).length;
           }
+
+          let inputs=this.$el.querySelector("input");
+          if([].indexOf.call(inputs,document.activeElement)===-1){
+            this.setSelected();
+          }
+
         },
         computed:{
            iconClass:function(){
@@ -104,12 +116,19 @@
           resetInputWidth(){
             this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
           },
+          resetInputHeight(){
+
+          },
           handleResize(){
             this.resetInputWidth();
+          },
+          setSelected(){
+
           },
           handleOptionClick(option){
               if(!this.multiple){
                 this.$emit("input",option.value);
+                console.log(this.value);
                 this.visible=false;
               }
           }
