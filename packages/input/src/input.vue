@@ -78,6 +78,9 @@
 	    watch:{
 	    	currentValue:function(val){
 	    		this.currentValue=val;
+	    	},
+	    	value:function(val,oldVal){
+                this.setCurrentValue(val);
 	    	}
 	    },
 	    methods:{
@@ -86,6 +89,9 @@
 	    	},
 	    	handleIconClick(e){
 	    		this.$emit("click",e)
+	    	},
+	    	setCurrentValue(value){
+	    		this.currentValue=value;
 	    	}
 	    }
 	}

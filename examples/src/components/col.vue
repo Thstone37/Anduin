@@ -133,7 +133,7 @@
 
 	<ui-row>
 		<ui-col :span="24">
-           <ui-select placeholder="请输入内容">
+           <ui-select placeholder="请输入内容" v-model="value">
            	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
            </ui-select>
 		</ui-col>
@@ -163,6 +163,7 @@
 	     	span:10,
 	     	radio:"已认证",
 	     	checkbox:[],
+	     	value:'',
 	     	options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"广州",value:"3"},{label:"深圳",value:"4"},{label:"长沙",value:"5"}]
 	     }
 	   },

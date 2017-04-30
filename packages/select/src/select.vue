@@ -63,7 +63,6 @@
           //   this.currentPlaceholder = val;
           // }
           value(val){
-            console.log(val);
             this.setSelected();
           },
           visible(val){
@@ -148,7 +147,6 @@
           },
           setSelected(){
             if(!this.multiple){
-              
               let option=this.getOption(this.value);
               if(option.created){
                  this.createdLabel=option.label;
@@ -156,6 +154,7 @@
               }else{
                   this.createdSelected=false;
               }
+              console.log(option.label);
               this.selectedLabel=option.label;
               this.selected=option;
               return;
