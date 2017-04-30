@@ -107,11 +107,16 @@
             this.resetInputWidth();
           },
           handleOptionClick(option){
+            console.log(!this.multiple);
               if(!this.multiple){
+                console.log(option.value);
                 this.$emit("input",option.value);
                 this.visible=false;
               }
           }
+        },
+        created(){
+          this.$on("handleOptionClick",this.handleOptionClick);
         },
         mounted(){
             addResizeListener(this.$el,this.handleResize);

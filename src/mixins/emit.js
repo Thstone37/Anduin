@@ -17,9 +17,9 @@ export default{
           var parent=this.$parent||this.$root;
           var name=parent.$options.componentName;
           while(parent&&(!name||name!==componentName)){
-          	parent=parent.$parent;
+            parent=parent.$parent;
           	if(parent){
-          		name=parent.$options.compnentName;
+          		name=parent.$options.componentName;
           	}
           }
           if(parent){

@@ -52,10 +52,7 @@
         },
         methods:{
             selectOptionClick(){
-                console.log(!this.disabled);
-                console.log(this.groupDisabled);
-               if(!this.disabled&&!this.groupDisabled){
-                 console.log(this);
+               if(this.disabled!==true&&this.groupDisabled!==true){
                  this.dispatch("UiSelect","handleOptionClick",this);
                }
             }
