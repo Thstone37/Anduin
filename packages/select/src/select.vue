@@ -15,6 +15,7 @@
     ref="inputRef"
     :placeholder="currentPlaceholder"
     :icon="iconClass"
+    :size="size"
     v-model="selectedLabel"
     @click="handleIconClick"
     @focus="handleFocus"
@@ -49,8 +50,10 @@
 	export default{
         name:"UiSelect",
         componentName:"UiSelect",
+
         mixins:[emit],
         directives:{clickout},
+
         props:{
           value:{},
           placeholder:{
@@ -58,7 +61,8 @@
             default:""
           },
           popperClass:String,
-          multiple:Boolean
+          multiple:Boolean,
+          size:String
         },
         data(){
           return{
