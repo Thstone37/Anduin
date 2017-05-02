@@ -5,4 +5,20 @@
 	z-index:1;
 	top:50%;
 	transform:translateY(-50%);
+	cursor:pointer;
+	.ui-select-tags-inner{
+		.ui-tag{
+			color:$tag-color;
+			border:$tag-border;
+			border-radius:$tag-border-radius;
+			background:$tag-bgColor;
+			display: inline-block;
+			margin:3px 0px 5px 3px;
+			padding:0 5px;
+		   .ui-icon-tag{
+		   	 font-size:14px;
+		   	 cursor:pointer;
+		   }
+		}
+	}
 }

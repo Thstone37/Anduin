@@ -2,7 +2,7 @@
 	<div class="ui-select" v-clickout="handleClose">
 
    <div class="ui-select-tags" v-if="multiple" ref="tags"
-   :style="{'max-width':inputWidth-36+'px'}"
+   :style="{'max-width':inputWidth-36+'px'}" @click.stop="toggleDropDown"
    >
      <transition-group tag="div" 
        class="ui-select-tags-inner"
@@ -133,6 +133,9 @@
         methods:{
           handleIconClick:function(){
              this.visible=!this.visible;
+          },
+          toggleDropDown(){
+            this.visible=!this.visible;
           },
           handleIconPostive:function(){
              let icon = this.$el.querySelector(".ui-input-icon");
