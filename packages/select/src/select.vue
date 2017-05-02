@@ -6,7 +6,7 @@
        class="ui-select-tags-inner"
        @after-leave="resetInputHeight"
        >
-       <ui-tag v-for="item in selected">
+       <ui-tag v-for="item in selected" :key="item.value">
          
        </ui-tag>
      </transition-group>
@@ -62,7 +62,11 @@
           },
           popperClass:String,
           multiple:Boolean,
-          size:String
+          size:String,
+          multipleLimit:{
+            type:Number,
+            default:0
+          }
         },
         data(){
           return{
@@ -86,6 +90,7 @@
           value(val){
             this.setSelected();
             this.$emit("change",val);
+            console.log(this.selected);
           },
           visible(val){
             if(!val){
@@ -210,7 +215,13 @@
                   if(item==option.value){
                     optionIndex=index;
                   }
-                })
+                });
+                if(optionIndex>-1){
+                  this.value.splice(optionIndex);
+                }else if(this.multipleLimit<=0||this.value.length<this.multipleLimit){
+                  this.value.push(option.value);
+                }
+                console.log(this.value);
               }
           }
         },
