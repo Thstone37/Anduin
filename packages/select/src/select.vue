@@ -204,6 +204,13 @@
                 this.$emit("input",option.value);        
                 this.selectedLabel=option.label;
                 this.visible=false;
+              }else{
+                let optionIndex=-1;
+                this.value.forEach((item,index) =>{
+                  if(item==option.value){
+                    optionIndex=index;
+                  }
+                })
               }
           }
         },
