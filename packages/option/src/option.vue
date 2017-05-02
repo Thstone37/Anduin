@@ -1,6 +1,7 @@
 <template>
 	<li class="ui-option" :data-value="value" @click.stop="selectOptionClick" :class="{
-      'selected':itemSelected
+      'selected':itemSelected,
+      'ui-option-multiple':parent.multiple
     }">
     <slot><span>{{label}}</span></slot>
 	</li>  
