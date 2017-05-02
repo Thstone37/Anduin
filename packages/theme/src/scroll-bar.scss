@@ -1,27 +1,43 @@
 @import './common/var.scss';
-.ui-scroll-bar{
-	.ui-scroll-bar-list{
-		padding:0;
-		margin:0;
-		list-style: none;
-		li.ui-option{
-			list-style:none;
-			padding:8px 10px;
-			cursor:pointer;
-			&:hover{
-				background:$option-hover-bgColor;
-			}
-			&.selected{
-				background:$option-selected-bgColor;
-				color:$option-selected-color;
-			}
-			&.ui-option-multiple.selected{
-				background:#fff;
-				color:$option-selected-bgColor;
-				:after{
-					content:"\e645"
-				}
-			}
-		}
-	}
+.ui-scroll-bar {
+    .ui-scroll-bar-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li.ui-option {
+            list-style: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            &:hover {
+                background: $option-hover-bgColor;
+            }
+            &.selected {
+                background: $option-selected-bgColor;
+                color: $option-selected-color;
+            }
+            &.ui-option-multiple.selected {
+                background: #fff;
+                color: $option-selected-bgColor;
+                position: relative;
+                &:after {
+                    content: "\e645";
+                    font-family: "Anduin iconfont" !important;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 1;
+                    font-variant: normal;
+                    text-transform: none;
+                    vertical-align: baseline;
+                    display: inline-block;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    position: absolute;
+                    right:10px;
+                    top:50%;
+                    transform:translateY(-50%);
+                }
+            }
+        }
+    }
 }
