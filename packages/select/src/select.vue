@@ -1,12 +1,14 @@
 <template>
 	<div class="ui-select" v-clickout="handleClose">
 
-   <div class="ui-select-tags" v-if="multiple" ref="tags">
+   <div class="ui-select-tags" v-if="multiple" ref="tags"
+   :style="{'max-width':inputWidth-36+'px'}"
+   >
      <transition-group tag="div" 
        class="ui-select-tags-inner"
        @after-leave="resetInputHeight"
        >
-       <ui-tag v-for="item in selected" :key="item.value">
+       <ui-tag v-for="item in selected" :key="item.value" :value="item">
          
        </ui-tag>
      </transition-group>
@@ -71,6 +73,7 @@
         data(){
           return{
             currentPlaceholder:this.placeholder,
+            cachedPlaceholder:"",
             visible:false,
             inputWidth:0,
             isSelect:true,
@@ -88,9 +91,16 @@
           //   this.currentPlaceholder = val;
           // }
           value(val){
+            if(this.multiple){
+              this.resetInputHeight();
+              if(val.length>0){
+                this.currentPlaceholder=""
+              }else{
+                this.currentPlaceholder=this.cachedPlaceholder
+              }
+            }
             this.setSelected();
             this.$emit("change",val);
-            console.log(this.selected);
           },
           visible(val){
             if(!val){
@@ -156,11 +166,11 @@
           },
           resetInputHeight(){
              this.$nextTick(() =>{
-               let inputChildNodes=this.$refs.reference.$el.childNodes;
+               let inputChildNodes=this.$refs.inputRef.$el.childNodes;
                let input=[].filter.call(inputChildNodes,item =>item.tagName=="INPUT")[0];
-               input.style.height=Math.max(this.$ref.tags.clientHeight+6,sizeMap[this.size]||36)+"px";
+               input.style.height=Math.max(this.$refs.tags.clientHeight+6,sizeMap[this.size]||36)+"px";
                if(this.visible){
-                this.broadcast("UiSelectDropdown", updatePopper);
+                this.broadcast("UiSelectDropdown", "updatePopper");
                }
              })
           },
@@ -217,7 +227,7 @@
                   }
                 });
                 if(optionIndex>-1){
-                  this.value.splice(optionIndex);
+                  this.value.splice(optionIndex,1);
                 }else if(this.multipleLimit<=0||this.value.length<this.multipleLimit){
                   this.value.push(option.value);
                 }
@@ -226,6 +236,7 @@
           }
         },
         created(){
+          this.cachedPlaceholder=this.currentPlaceholder=this.placeholder;
           if(!this.multiple&&!Array.isArray(this.value)){
             this.$emit("input",'');
           }

@@ -1,0 +1,8 @@
+@import "./common/var.scss";
+
+.ui-select-tags{
+	position: absolute;
+	z-index:1;
+	top:50%;
+	transform:translateY(-50%);
+}
