@@ -153,7 +153,10 @@
              this.$nextTick(() =>{
                let inputChildNodes=this.$refs.reference.$el.childNodes;
                let input=[].filter.call(inputChildNodes,item =>item.tagName=="INPUT")[0];
-               input.style.height=Math.max(this.$ref.tags.clientHeight+6,sizeMap[this.size])
+               input.style.height=Math.max(this.$ref.tags.clientHeight+6,sizeMap[this.size]||36)+"px";
+               if(this.visible){
+                this.broadcast("UiSelectDropdown", updatePopper);
+               }
              })
           },
           handleResize(){
