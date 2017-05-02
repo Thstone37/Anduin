@@ -1,7 +1,15 @@
 <template>
 	<div class="ui-select" v-clickout="handleClose">
-   <div class="ui-select-tags" v-if="multiple">
-     
+
+   <div class="ui-select-tags" v-if="multiple" ref="tags">
+     <transition-group tag="div" 
+       class="ui-select-tags-inner"
+       @after-leave="resetInputHeight"
+       >
+       <ui-tag v-for="item in selected">
+         
+       </ui-tag>
+     </transition-group>
    </div>
 		<ui-input 
     ref="inputRef"
@@ -28,6 +36,7 @@
   import UiOption from "../../option/src/option.vue";
   import UiOptionGroup from "../../option-group/src/option-group.vue";
   import UiSelectDropdown from "../../select-dropdown/src/select-dropdown.vue";
+  import UiTag from "../../tag/src/tag.vue";
   import UiScrollBar from "../../scroll-bar/src/scroll-bar.js";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
   import clickout from "../../../src/utils/clickout.js";
@@ -186,6 +195,10 @@
           if(!this.multiple&&!Array.isArray(this.value)){
             this.$emit("input",'');
           }
+          if(!this.multiple&&!Array.isArray(this.value)){
+            this.$emit("input",[]);
+          }
+          console.log(this.value);
           this.$on("handleOptionClick",this.handleOptionClick);
           this.setSelected();
           this.$on("setSelected",this.setSelected);
@@ -198,7 +211,8 @@
           UiOption,
           UiOptionGroup,
           UiSelectDropdown,
-          UiScrollBar
+          UiScrollBar,
+          UiTag
         }
 	}
 </script>
