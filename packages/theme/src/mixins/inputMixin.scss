@@ -1,0 +1,5 @@
+@mixin inputSize($font-size,$height){
+	font-size:$font-size;
+	line-height:$height;
+	height:$height;
+}

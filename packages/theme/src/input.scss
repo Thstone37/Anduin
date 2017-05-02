@@ -1,11 +1,13 @@
 @import "./common/var.scss";
+@import "./mixins/inputMixin.scss";
+$input-size-list:(lg,$input-large-font-size,$input-large-height),(sm,$input-small-font-size,$input-small-height),(mn,$input-mini-font-size,$input-mini-height);
 .ui-input{
 	position: relative;
 	font-size:14px;
 	width:180px;
 	.ui-input-inner{
-		height: 36px;
-		line-height: 36px;
+		height: $input-height;
+		line-height: $input-height;
 		display: block;
 		border-radius:$input-border-radius;
 		border:1px solid $input-default-border-color;
@@ -15,8 +17,14 @@
 		width:100%;
 		box-sizing:border-box;
 		color:$input-default-color;
+		font-size:$input-font-size;
 		&:focus{
 			border-color:$input-border-focus-color;
+		}
+	}
+	@each $size,$font-size,$height in $input-size-list{
+		.ui-input-#{$size}{
+			@include inputSize($font-size,$height);
 		}
 	}
 	.ui-input-icon{
