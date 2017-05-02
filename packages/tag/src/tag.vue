@@ -3,7 +3,6 @@
 		<span class="ui-tag">
 			<slot></slot>
 			<span class="ui-tag-text">{{value.label}}</span>
-			<i class="ui-tag-close"></i>
 		</span>
 	</transition>
 </template>
