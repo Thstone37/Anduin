@@ -133,7 +133,7 @@
 
 	<ui-row>
 		<ui-col :span="24">
-           <ui-select placeholder="请输入内容" v-model="value" @change="showVal" multiple>
+           <ui-select placeholder="请输入内容" v-model="value" @change="showVal" >
            	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
            </ui-select>
 		</ui-col>

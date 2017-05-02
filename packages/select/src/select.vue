@@ -209,6 +209,7 @@
                   this.createdSelected=false;
               }
               this.selected=option;
+              this.selectedLabel=option.label;
               return;
             }
             let result=[];
@@ -222,7 +223,6 @@
           handleOptionClick(option){
               if(!this.multiple){
                 this.$emit("input",option.value);        
-                this.selectedLabel=option.label;
                 this.visible=false;
               }else{
                 let optionIndex=-1;
