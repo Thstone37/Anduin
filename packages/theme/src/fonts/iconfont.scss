@@ -1,10 +1,10 @@
 
-@font-face {font-family: "Anduin iconfont";
-  src: url('./src/fonts/iconfont.eot?t=1488943189191'); /* IE9*/
-  src: url('./src/fonts/iconfont.eot?t=1488943189191#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('./src/fonts/iconfont.woff?t=1488943189191') format('woff'), /* chrome, firefox */
-  url('./src/fonts/iconfont.ttf?t=1488943189191') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('./src/fonts/iconfont.svg?t=1488943189191#iconfont') format('svg'); /* iOS 4.1- */
+@font-face {font-family: "iconfont";
+  src: url('./src/fonts/iconfont.eot?t=1493711252996'); /* IE9*/
+  src: url('./src/fonts/iconfont.eot?t=1493711252996#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./src/fonts/iconfont.woff?t=1493711252996') format('woff'), /* chrome, firefox */
+  url('./src/fonts/iconfont.ttf?t=1493711252996') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./src/fonts/iconfont.svg?t=1493711252996#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 [class^="ui-icon"], [class*="ui-icon"] {
@@ -23,13 +23,17 @@
 
 .icon-shijian:before { content: "\e603"; }
 
+.icon-check:before { content: "\e645"; }
+
+.icon-close:before { content: "\e646"; }
+
 .icon-iconfontriqi:before { content: "\e605"; }
 
 .icon-add:before { content: "\e620"; }
 
 .icon-minus:before { content: "\e622"; }
 
-.ui-icon-arrowUp:before { content: "\e600"; }
+.icon-arrowUp:before { content: "\e600"; }
 
-.ui-icon-arrowDown:before { content: "\e601"; }
+.icon-arrowDown:before { content: "\e601"; }
 
