@@ -184,7 +184,7 @@
           },
           getOption(value){
             let option;
-            for(var i=0,len=this.cachedOptions.length;i<0;i++){
+            for(var i=0,len=this.cachedOptions.length;i<len;i++){
               const cachedOption=this.cachedOptions[i];
               if(cachedOption.value===value){
                 option=cachedOption;

@@ -63,6 +63,10 @@
                  this.dispatch("UiSelect","handleOptionClick",this);
                }
             }
+        },
+        created(){
+            this.parent.options.push(this);
+            this.parent.cachedOptions.push(this);
         }
 
 	}
