@@ -40,7 +40,12 @@
   import UiScrollBar from "../../scroll-bar/src/scroll-bar.js";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
   import clickout from "../../../src/utils/clickout.js";
-  import {addResizeListener,removeResizeListener} from "../../../src/utils/resize-event.js"
+  import {addResizeListener,removeResizeListener} from "../../../src/utils/resize-event.js";
+  const sizeMap={
+    "large":42,
+    "small":30,
+    "mini":22
+  }
 	export default{
         name:"UiSelect",
         componentName:"UiSelect",
@@ -141,7 +146,11 @@
             this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
           },
           resetInputHeight(){
-
+             this.$nextTick(() =>{
+               let inputChildNodes=this.$refs.reference.$el.childNodes;
+               let input=[].filter.call(inputChildNodes,item =>item.tagName=="INPUT")[0];
+               input.style.height=Math.max(this.$ref.tags.clientHeight+6,sizeMap[this.size])
+             })
           },
           handleResize(){
             this.resetInputWidth();
@@ -185,7 +194,7 @@
           },
           handleOptionClick(option){
               if(!this.multiple){
-                this.$emit("input",option.value);
+                this.$emit("input",option.value);        
                 this.selectedLabel=option.label;
                 this.visible=false;
               }
@@ -195,10 +204,9 @@
           if(!this.multiple&&!Array.isArray(this.value)){
             this.$emit("input",'');
           }
-          if(!this.multiple&&!Array.isArray(this.value)){
+          if(this.multiple&&!Array.isArray(this.value)){
             this.$emit("input",[]);
           }
-          console.log(this.value);
           this.$on("handleOptionClick",this.handleOptionClick);
           this.setSelected();
           this.$on("setSelected",this.setSelected);

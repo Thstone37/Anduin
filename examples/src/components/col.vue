@@ -169,7 +169,7 @@
 	   },
 	   methods:{
 	   	showVal:function(val){
-	   		console.log(val)
+	   		
 	   	}
 	   },
 	   components: {
