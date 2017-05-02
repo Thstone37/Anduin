@@ -3,7 +3,7 @@
 		<span class="ui-tag">
 			<slot></slot>
 			<span class="ui-tag-text">{{value.label}}</span>
-			<i class="ui-icon-close ui-icon-tag"></i>
+			<i class="ui-icon-close ui-icon-tag" @click="handleClose"></i>
 		</span>
 	</transition>
 </template>
@@ -14,6 +14,11 @@
        props:{
        	 value:{},
        	 closeTransition:Boolean
+       },
+       methods:{
+       	handleClose(){
+       		this.$emit("close",event);
+       	}
        }
 	}
 </script>

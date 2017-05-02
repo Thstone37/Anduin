@@ -8,8 +8,9 @@
        class="ui-select-tags-inner"
        @after-leave="resetInputHeight"
        >
-       <ui-tag v-for="item in selected" :key="item.value" :value="item">
-         
+       <ui-tag v-for="item in selected" 
+       :key="item.value" 
+       :value="item" @close="deleteTag($event,item)"> 
        </ui-tag>
      </transition-group>
    </div>
@@ -58,6 +59,7 @@
 
         props:{
           value:{},
+          disabled:Boolean,
           placeholder:{
             type:String,
             default:""
@@ -234,8 +236,14 @@
                 }else if(this.multipleLimit<=0||this.value.length<this.multipleLimit){
                   this.value.push(option.value);
                 }
-                console.log(this.value);
               }
+          },
+          deleteTag(event,tag){
+             let index=this.selected.indexOf(tag);
+             if(!this.disabled&&index>-1){
+              this.value.splice(index,1)
+             }
+             event.stopPropagation();
           }
         },
         created(){
