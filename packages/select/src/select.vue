@@ -1,5 +1,8 @@
 <template>
 	<div class="ui-select" v-clickout="handleClose">
+   <div class="ui-select-tags" v-if="multiple">
+     
+   </div>
 		<ui-input 
     ref="inputRef"
     :placeholder="currentPlaceholder"

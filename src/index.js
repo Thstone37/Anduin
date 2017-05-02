@@ -10,6 +10,7 @@ import CountInput from "../packages/countInput";
 import Option from "../packages/option";
 import Select from "../packages/select";
 import Input from "../packages/input";
+import Tag from "../packages/tag";
 const components=[
   Col,
   Row,
@@ -22,7 +23,8 @@ const components=[
   CountInput,
   Option,
   Select,
-  Input
+  Input,
+  Tag
 ];
 const install=function(Vue){
   /* istanbul ignore if */
@@ -49,5 +51,6 @@ module.exports={
   CountInput,
   Option,
   Select,
-  Input
+  Input,
+  Tag
 }
