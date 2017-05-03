@@ -1,0 +1,1 @@
+import defaultLang from "./lang/zh-CN";
