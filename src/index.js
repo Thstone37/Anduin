@@ -26,7 +26,7 @@ const components=[
   Input,
   Tag
 ];
-const install=function(Vue){
+const install=function(Vue,opts={}){
   /* istanbul ignore if */
   if (install.installed) return;
    components.map(component =>{
