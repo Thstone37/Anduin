@@ -96,9 +96,9 @@
             if(this.multiple){
               this.resetInputHeight();
               if(val.length>0){
-                this.currentPlaceholder=""
+                this.currentPlaceholder="";
               }else{
-                this.currentPlaceholder=this.cachedPlaceholder
+                this.currentPlaceholder=this.cachedPlaceholder;
               }
             }
             this.setSelected();
