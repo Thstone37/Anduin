@@ -30,12 +30,14 @@
         <ui-scroll-bar>
           <slot></slot>
         </ui-scroll-bar>
+        <p v-if="emptyText">{{emptyText}}</p>
       </ui-select-dropdown>
     </transition>
 	</div>
 </template>
 <script>
   import emit from "../../../src/mixins/emit.js";
+  import locale from "../../../src/mixins/locale.js";
   import UiInput from "../../input/src/input.vue";
   import UiOption from "../../option/src/option.vue";
   import UiOptionGroup from "../../option-group/src/option-group.vue";
@@ -54,7 +56,7 @@
         name:"UiSelect",
         componentName:"UiSelect",
 
-        mixins:[emit],
+        mixins:[emit,locale],
         directives:{clickout},
 
         props:{
@@ -130,6 +132,11 @@
         computed:{
            iconClass:function(){
             return "arrowUp"
+           },
+           emptyText:function(){
+            console.log(this);
+               console.log(this.$t("select.loading"))
+               return this.$t("select.loading");
            }
         },
         methods:{

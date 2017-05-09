@@ -11,6 +11,7 @@ import Option from "../packages/option";
 import Select from "../packages/select";
 import Input from "../packages/input";
 import Tag from "../packages/tag";
+import locale from "./locale/index.js";
 const components=[
   Col,
   Row,
@@ -29,6 +30,8 @@ const components=[
 const install=function(Vue,opts={}){
   /* istanbul ignore if */
   if (install.installed) return;
+   locale.use(opts.message);
+
    components.map(component =>{
       Vue.component(component.name,component);
    })	

@@ -3,9 +3,10 @@ import VueRouter from "vue-router"
 import routes from "./routes.js"
 import Anduin from "../src/index.js"
 import '../packages/theme/index.scss'
-Vue.use(VueRouter);
-Vue.use(Anduin);
 
+
+Vue.use(VueRouter);
+Vue.use(Anduin,{message:"zh"});
 var router = new VueRouter({
 	mode: 'history',
 	routes
