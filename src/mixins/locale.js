@@ -1,9 +1,5 @@
-import {t} from "../locale/index";
+import {i18n} from "../locale/index";
 
 export default{
-	methods:{
-		t(...args){
-			t.apply(this,args);
-		}
-	}
+  i18n:i18n
 }

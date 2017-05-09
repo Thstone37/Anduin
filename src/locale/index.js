@@ -18,10 +18,8 @@ const getLang = function(message) {
 const use = function(m) {
     message = m || message;
     locale=getLang(message);
-    i18n=new VueI18n({locale: locale,messages: message})
+    var messageObj=require("../locale/lang/"+message+"-CN");
+    i18n=new VueI18n({locale: locale,messages: messageObj});
+    exports.i18n=i18n;
 }
-console.log(i18n);
-export default {
-    i18n: i18n,
-    use:use,
-}
+exports.use=use;
