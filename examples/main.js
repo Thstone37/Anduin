@@ -4,9 +4,8 @@ import routes from "./routes.js"
 import Anduin from "../src/index.js"
 import '../packages/theme/index.scss'
 
-
 Vue.use(VueRouter);
-Vue.use(Anduin,{message:"zh"});
+Vue.use(Anduin);
 var router = new VueRouter({
 	mode: 'history',
 	routes

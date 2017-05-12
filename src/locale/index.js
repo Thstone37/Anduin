@@ -20,7 +20,14 @@ let i18nHandler = function() {
 }
 
 export const t = function(path, options) {
-    const value = i18nHandler.apply(this, arguments)
+    const value = i18nHandler.apply(this, arguments);
+    if (value !== null && value !== undefined) return value;
+
+    const array = path.split(".");
+    let current = lang;
+    for (let i = 0, len = array.length; i < len; i++) {
+        
+    }
 }
 
 export const use = function(l) {
