@@ -20,7 +20,7 @@ let i18nHandler = function() {
 }
 
 export const t = function(path, options) {
-
+    const value = i18nHandler.apply(this, arguments)
 }
 
 export const use = function(l) {
