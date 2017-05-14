@@ -1,6 +1,7 @@
 <template>
 	<li class="ui-option" :data-value="value" @click.stop="selectOptionClick" :class="{
       'selected':itemSelected,
+      'disabled':disabled
       'ui-option-multiple':parent.multiple
     }">
     <slot><span>{{label}}</span></slot>
@@ -22,11 +23,11 @@
         		type:[String,Number],
         		default:''
         	},
-            created:Boolean,
-            groupDisabled:{
-                type:Boolean,
+          created:Boolean,
+          groupDisabled:{
+              type:Boolean,
                 
-            }
+          }
         },
         data(){
             return{
