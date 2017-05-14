@@ -134,7 +134,9 @@
 	<ui-row>
 		<ui-col :span="24">
            <ui-select placeholder="请输入内容" v-model="value" @change="showVal" multiple>
-           	 <ui-option v-for="item in options" :label="item.label" :value="item.value"></ui-option>
+           <ui-option-group :label="group.label" v-for="group in groupOptions" :key="group.label">
+           	 <ui-option v-for="item in group.options" :label="item.label" :value="item.value" :key="item.value"></ui-option>
+           	</ui-option-group>
            </ui-select>
 		</ui-col>
 	</ui-row>
@@ -164,7 +166,12 @@
 	     	radio:"已认证",
 	     	checkbox:[],
 	     	value:'',
-	     	options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"广州",value:"3"},{label:"深圳",value:"4"},{label:"长沙",value:"5"}]
+	     	options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"广州",value:"3"},{label:"深圳",value:"4"},{label:"长沙",value:"5"}],
+	     	groupOptions:[
+
+	     	{label:"热门城市",options:[{label:"北京",value:"1"},{label:"上海",value:"2"},{label:"广州",value:"3"},{label:"深圳",value:"4"},{label:"长沙",value:"5"}]},
+	     	{label:"城市名",options:[{label:"香港",value:"6"},{label:"澳门",value:"7"}]}
+	     	]
 	     }
 	   },
 	   methods:{

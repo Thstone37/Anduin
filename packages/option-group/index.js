@@ -1,4 +1,4 @@
-import UiOptionGroup from "./src/UiOptionGroup.vue";
+import UiOptionGroup from "./src/option-group.vue";
 
 UiOptionGroup.install=function(Vue){
 	Vue.component(UiOptionGroup.name,UiOptionGroup);

@@ -1,0 +1,10 @@
+@import './common/var.scss';
+.ui-select-group-container{
+	padding:0;
+	li{
+		list-style:none;
+	}
+	.ui-select-group{
+		padding:0;
+	}
+}

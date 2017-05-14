@@ -8,6 +8,7 @@ import CheckBox from "../packages/checkbox";
 import CheckBoxGroup from "../packages/checkbox-group";
 import CountInput from "../packages/countInput";
 import Option from "../packages/option";
+import OptionGroup from "../packages/option-group";
 import Select from "../packages/select";
 import Input from "../packages/input";
 import Tag from "../packages/tag";
@@ -23,6 +24,7 @@ const components=[
   CheckBoxGroup,
   CountInput,
   Option,
+  OptionGroup,
   Select,
   Input,
   Tag
@@ -54,6 +56,7 @@ module.exports={
   CheckBoxGroup,
   CountInput,
   Option,
+  OptionGroup,
   Select,
   Input,
   Tag

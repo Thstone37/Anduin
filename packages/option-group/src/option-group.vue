@@ -1,4 +1,4 @@
-<tempalte>
+<template>
 	<ul class="ui-select-group-container">
 		<li class="ui-select-group-title" v-show="visible">{{label}}</li>
 		<li>
@@ -7,7 +7,7 @@
 			</ul>
 		</li>
 	</ul>
-</tempalte>
+</template>
 <script>
 	export default{
 		name:"UiOptionGroup",
@@ -15,7 +15,7 @@
 		componentName:"UiOptionGroup",
 
 		props:{
-
+          label:String
 		},
 		data(){
 			return {
