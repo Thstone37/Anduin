@@ -1,7 +1,5 @@
 export default{
-	zh:{
 		select:{
-			loading:"数据加载中",
-		}
-	}
+			loading:"加载中",
+		}	
 }

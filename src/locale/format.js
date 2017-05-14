@@ -35,4 +35,5 @@ export default function(Vue) {
             }
         })
     }
+    return template;
 }

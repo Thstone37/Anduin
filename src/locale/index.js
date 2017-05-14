@@ -13,7 +13,9 @@ let i18nHandler = function() {
         if (!merged) {
             merged = true;
             Vue.locale(Vue.config.lang,
-                deepmerge(lang, Vue.locale(Vue.config.lang) || {}, { clone: true }))
+                deepmerge(lang, Vue.locale(Vue.config.lang) || {}, {
+                    clone: true
+                }))
         }
         return vuei18n.apply(this, arguments);
     }
@@ -28,9 +30,11 @@ export const t = function(path, options) {
     for (let i = 0, len = array.length; i < len; i++) {
         const property = array[i];
         value = current[property];
-        if(!value) return "";
-        if(i=len-1) return format()
+        if (!value) return "";
+        if (i === len - 1) return format(value, options);
+        current=value;
     }
+    return "";
 }
 
 export const use = function(l) {
@@ -40,4 +44,8 @@ export const use = function(l) {
 export const i18n = function(fn) {
     i18nHandler = fn || i18nHandler;
 }
-export default { use, i18n, t }
+export default {
+    use,
+    i18n,
+    t
+}

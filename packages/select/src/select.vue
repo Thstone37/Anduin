@@ -134,9 +134,7 @@
             return "arrowUp"
            },
            emptyText:function(){
-            console.log(this);
-               console.log(this.$t("select.loading"))
-               return this.$t("select.loading");
+               return this.t("select.loading");
            }
         },
         methods:{
