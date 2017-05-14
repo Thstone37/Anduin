@@ -28,6 +28,8 @@ export const t = function(path, options) {
     for (let i = 0, len = array.length; i < len; i++) {
         const property = array[i];
         value = current[property];
+        if(!value) return "";
+        if(i=len-1) return format()
     }
 }
 
