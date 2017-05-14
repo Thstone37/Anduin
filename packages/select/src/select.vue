@@ -72,7 +72,9 @@
           multipleLimit:{
             type:Number,
             default:0
-          }
+          },
+          loading:Boolean,
+          loadingText:String
         },
         data(){
           return{
@@ -134,7 +136,9 @@
             return "arrowUp"
            },
            emptyText:function(){
-               return this.t("select.loading");
+            if(this.loading){
+               return this.loadingText||this.t("select.loading");
+             }
            }
         },
         methods:{
