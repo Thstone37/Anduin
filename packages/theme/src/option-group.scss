@@ -1,6 +1,13 @@
 @import './common/var.scss';
 .ui-select-group-container{
 	padding:0;
+	li.ui-select-group-title{
+		font-size:$option-group-font-size;
+		line-height: 30px;
+		height:30px;
+		padding-left:10px;
+		color:$option-group-color;
+	}
 	li{
 		list-style:none;
 	}
