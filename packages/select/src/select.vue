@@ -176,7 +176,7 @@
           },
           handleMouseDown(e){
             if(e.target.tagName !== "INPUT") return;
-              this.toggleSelectDrown();
+              this.toggleDropDown();
               e.preventDefault();
             
           },
