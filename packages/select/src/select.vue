@@ -164,19 +164,24 @@
              }
           },
           handleOpen(){
-            this.visible = true;
+            this.toggleSelectDrown();
           },
           handleClose(){
-            this.visible = false;
+            this.toggleSelectDrown();
           },
           handleFocus(){
-            this.visible=true;
+            this.toggleSelectDrown();
           },
           handleMouseDown(e){
             if(e.target.tagName !== "INPUT") return;
-              this.visible = !this.visible;
+              this.toggleSelectDrown();
               e.preventDefault();
             
+          },
+          toggleSelectDrown(){
+            if(!this.disabled){
+              this.visiable=!this.visiable;
+            }
           },
           resetInputWidth(){
             this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
