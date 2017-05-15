@@ -21,6 +21,7 @@
     :placeholder="currentPlaceholder"
     :icon="iconClass"
     :size="size"
+    :disabled="disabled"
     v-model="selectedLabel"
     @click="handleIconClick"
     @focus="handleFocus"

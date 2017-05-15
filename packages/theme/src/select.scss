@@ -1,4 +1,4 @@
-@import "./common/var.scss"
+@import "./common/var.scss";
 .ui-select{
 	display: inline-block;
 	.ui-input{
@@ -19,7 +19,12 @@
 	}
 	&.ui-select-disabled{
 		.ui-input{
-
+			.ui-input-inner{
+	           color:$input-disabled-color;
+   			   border-color:$input-disabled-border-color;
+               background-color: $input-disabled-bg-color;
+               cursor:not-allowed;	
+			}
 		}
 	}
 }

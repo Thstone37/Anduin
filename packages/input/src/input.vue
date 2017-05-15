@@ -3,7 +3,8 @@
      {
        'ui-input-group':$slots.pre||$slots.post,
        'ui-input-group-pre':$slots.pre,
-       'ui-input-group-post':$slots.post
+       'ui-input-group-post':$slots.post,
+       'ui-input-disabled':disabled
      }
    
 	]">
@@ -66,6 +67,7 @@
 				type:Number,
 				default:2
 			},
+			disabled:Boolean,
 			name:String,
 			minLength:Number,
 			maxLength:Number,
