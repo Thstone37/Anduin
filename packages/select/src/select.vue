@@ -1,5 +1,7 @@
 <template>
-	<div class="ui-select" v-clickout="handleClose">
+	<div class="ui-select" :class={} v-clickout="handleClose"
+   :class="{'ui-select-disabled':disabled}"
+  >
 
    <div class="ui-select-tags" v-if="multiple" ref="tags"
    :style="{'max-width':inputWidth-36+'px'}" @click.stop="toggleDropDown"
