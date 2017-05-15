@@ -25,6 +25,9 @@
                background-color: $input-disabled-bg-color;
                cursor:not-allowed;	
 			}
+			.ui-input-icon{
+				cursor: not-allowed;
+			}
 		}
 	}
 }
