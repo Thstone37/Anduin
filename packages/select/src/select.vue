@@ -1,5 +1,5 @@
 <template>
-	<div class="ui-select" :class={} v-clickout="handleClose"
+	<div class="ui-select" v-clickout="handleClose"
    :class="{'ui-select-disabled':disabled}"
   >
 
