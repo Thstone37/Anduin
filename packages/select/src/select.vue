@@ -146,10 +146,12 @@
         },
         methods:{
           handleIconClick:function(){
-             this.visible=!this.visible;
+             this.toggleDropDown();
           },
           toggleDropDown(){
-            this.visible=!this.visible;
+            if(!this.disabled){
+                this.visible=!this.visible;
+            }
           },
           handleIconPostive:function(){
              let icon = this.$el.querySelector(".ui-input-icon");
@@ -164,24 +166,19 @@
              }
           },
           handleOpen(){
-            this.toggleSelectDrown();
+            this.toggleDropDown();
           },
           handleClose(){
-            this.toggleSelectDrown();
+            this.toggleDropDown();
           },
           handleFocus(){
-            this.toggleSelectDrown();
+            this.toggleDropDown();
           },
           handleMouseDown(e){
             if(e.target.tagName !== "INPUT") return;
               this.toggleSelectDrown();
               e.preventDefault();
             
-          },
-          toggleSelectDrown(){
-            if(!this.disabled){
-              this.visiable=!this.visiable;
-            }
           },
           resetInputWidth(){
             this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
