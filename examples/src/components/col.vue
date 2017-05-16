@@ -134,7 +134,7 @@
 	<ui-row>
 		<ui-col :span="24">
            <ui-select placeholder="请输入内容" v-model="value" @change="showVal" multiple>
-           <ui-option-group :label="group.label" v-for="group in groupOptions" :key="group.label">
+           <ui-option-group :label="group.label" v-for="group in groupOptions" :key="group.label" disabled>
            	 <ui-option v-for="item in group.options" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled"></ui-option>
            	</ui-option-group>
            </ui-select>

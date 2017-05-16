@@ -15,7 +15,11 @@
 		componentName:"UiOptionGroup",
 
 		props:{
-          label:String
+          label:String,
+          disabled:{
+          	type:Boolean,
+          	default:false
+          }
 		},
 		data(){
 			return {

@@ -1,7 +1,7 @@
 <template>
 	<li class="ui-option" :data-value="value" @click.stop="selectOptionClick" :class="{
       'selected':itemSelected,
-      'disabled':disabled,
+      'disabled':disabled||groupDisabled,
       'ui-option-multiple':parent.multiple
     }">
     <slot><span>{{label}}</span></slot>
@@ -28,10 +28,10 @@
             type:Boolean,
             default:false
           },
-          groupDisabled:{
-              type:Boolean,
+          // groupDisabled:{
+          //     type:Boolean,
                 
-          }
+          // }
         },
         data(){
             return{
@@ -60,6 +60,14 @@
             }else{
                 return this.parent.value.indexOf(this.value)>-1;
             }
+          },
+          groupDisabled(){
+            let parent=this.$parent;
+            if(parent.componentName="UiOptionGroup"){              
+              return parent.disabled;
+            }else{
+                return false;
+            }
           }
         },
         methods:{
@@ -72,7 +80,6 @@
         created(){
             this.parent.options.push(this);
             this.parent.cachedOptions.push(this);
-            console.log(this.disabled);
         }
 
 	}
