@@ -18,6 +18,10 @@
                 background: $option-selected-bgColor;
                 color: $option-selected-color;
             }
+            &.disabled{
+                cursor:not-allowed;
+                color:$option-disabled-color;
+            }
             &.ui-option-multiple.selected {
                 background: #fff;
                 color: $option-selected-bgColor;

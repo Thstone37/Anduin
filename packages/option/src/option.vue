@@ -24,6 +24,10 @@
         		default:''
         	},
           created:Boolean,
+          disabled:{
+            type:Boolean,
+            default:false
+          },
           groupDisabled:{
               type:Boolean,
                 
@@ -31,10 +35,10 @@
         },
         data(){
             return{
-                disabled:{
-                    type:Boolean,
-                    default:false
-                },
+                // disabled:{
+                //     type:Boolean,
+                //     default:false
+                // },
             }
         },
         watch:{
@@ -68,6 +72,7 @@
         created(){
             this.parent.options.push(this);
             this.parent.cachedOptions.push(this);
+            console.log(this.disabled);
         }
 
 	}
