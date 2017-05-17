@@ -15,8 +15,9 @@
        :value="item" @close="deleteTag($event,item)"> 
        </ui-tag>
      </transition-group>
-     <input class="el-select-input" 
+     <input class="ui-select-input" 
       v-if="query||remote||allowCreate"
+      @keyup="handlePlaceholder"
      />
    </div>
 		<ui-input 
