@@ -15,6 +15,9 @@
        :value="item" @close="deleteTag($event,item)"> 
        </ui-tag>
      </transition-group>
+     <input class="el-select-input" 
+      v-if="query||remote||allowCreate"
+     />
    </div>
 		<ui-input 
     ref="inputRef"
@@ -71,6 +74,9 @@
           },
           popperClass:String,
           multiple:Boolean,
+          remote:Boolean,
+          query:Boolean,
+          allowCreate:Boolean,
           size:String,
           multipleLimit:{
             type:Number,
