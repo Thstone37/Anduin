@@ -15,7 +15,8 @@
        :value="item" @close="deleteTag($event,item)"> 
        </ui-tag>
      </transition-group>
-     <input class="ui-select-input" 
+     <input class="ui-select-input"
+      ref="selectInput" 
       v-if="query||remote||allowCreate"
       @keyup="handlePlaceholder"
      />
@@ -184,8 +185,12 @@
           handleMouseDown(e){
             if(e.target.tagName !== "INPUT") return;
               this.toggleDropDown();
-              e.preventDefault();
-            
+              e.preventDefault();            
+          },
+          handlePlaceholder(e){
+             if(this.placeholder!==""){
+                 this.currentPlaceholder=this.$refs.selectInput.value?"":this.placeholder;
+             }
           },
           resetInputWidth(){
             this.inputWidth=this.$refs.inputRef.$el.getBoundingClientRect().width;
