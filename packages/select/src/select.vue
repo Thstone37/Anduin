@@ -16,8 +16,9 @@
        </ui-tag>
      </transition-group>
      <input class="ui-select-input"
-      ref="selectInput" 
-      v-if="query||remote||allowCreate"
+      ref="selectInput"
+      v-model="query" 
+      v-if="searchable||remote||allowCreate"
       @keyup="handlePlaceholder"
      />
    </div>
@@ -54,6 +55,7 @@
   import UiScrollBar from "../../scroll-bar/src/scroll-bar.js";
   import {hasClass,addClass,removeClass} from "../../../src/utils/dom.js";
   import clickout from "../../../src/utils/clickout.js";
+  import debounce from "throttle-debounce/debounce";
   import {addResizeListener,removeResizeListener} from "../../../src/utils/resize-event.js";
   const sizeMap={
     "large":42,
@@ -77,7 +79,7 @@
           popperClass:String,
           multiple:Boolean,
           remote:Boolean,
-          query:Boolean,
+          searchable:Boolean,
           allowCreate:Boolean,
           size:String,
           multipleLimit:{
@@ -100,7 +102,8 @@
             cachedOptions:[],
             createdLabel:null,
             createdSelected:false,
-            selectedLabel:''
+            selectedLabel:'',
+            query:""
           }
         },
         watch:{
@@ -146,6 +149,9 @@
             if([].indexOf.call(inputs,document.activeElement)===-1){
               this.setSelected();
             }
+          },
+          query(val){
+
           }
         },
         computed:{
@@ -156,6 +162,9 @@
             if(this.loading){
                return this.loadingText||this.t("select.loading");
              }
+           },
+           debounce(){
+            
            }
         },
         methods:{
@@ -195,7 +204,7 @@
           },
           handlePlaceholder(e){
              if(this.placeholder!==""){
-                 this.currentPlaceholder=this.$refs.selectInput.value?"":this.placeholder;
+                 this.currentPlaceholder=this.$refs.selectInput.value?"":this.cachedPlaceholder;
              }
           },
           resetInputWidth(){
