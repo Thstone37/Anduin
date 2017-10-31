@@ -7,7 +7,8 @@ var utils=require("./utils.js");
 var express=require("express");
 var config=require("./config");
 var proxyMiddleWare=require("http-proxy-middleware");
-var path=require("path")
+var path=require("path");
+var opn=require("opn");
 spinner.start()
 // var webpackConfig=webpackConfigMerge(baseWebpackConfig,{
 //   devtool:"#source-map",
@@ -75,5 +76,6 @@ module.exports=app.listen(port,function(err){
     return;
   }
   var uri="http://localhost:"+port;
-  console.log("Listening at"+port+"\n");
+  console.log("Listening at "+port+"\n");
+  opn(uri+'/examples/example.html')
 })

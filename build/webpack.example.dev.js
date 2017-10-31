@@ -25,7 +25,7 @@ module.exports=merge(baseWebpackConfig,{
        new HtmlWebpackPlugin({
        	    filename:"example.html",
        	    template:"./examples/example.html",
-       		inject:true
+       	    inject:true
        }),
        //webpack-hot-middleware  useage setting
        new webpack.optimize.OccurrenceOrderPlugin(),

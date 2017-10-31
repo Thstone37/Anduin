@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import routes from "./routes.js"
 import Anduin from "../src/index.js"
-import '../packages/theme/index.scss'
+import 'packages/theme/index.scss'
 
 Vue.use(VueRouter);
 Vue.use(Anduin);
